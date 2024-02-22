@@ -95,7 +95,7 @@ M.dap = {
 -- Markdown
 M.markdown_preview = {
   n = {
-    ["<leader>mp"] = { "<cmd> MarkdownPreview<CR>", "OpenX Preview" },
+    ["<leader>mp"] = { "<cmd> MarkdownPreview<CR>", "Open Preview" },
     ["<leader>mc"] = { "<cmd> MarkdownPreviewStop<CR>", "Close Preview" },
   },
 }
