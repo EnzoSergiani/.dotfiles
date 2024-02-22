@@ -31,8 +31,8 @@ M.general = {
     ["<C-t>"] = { "gg", "Move cursor to the top of the document" },
     ["<C-a>"] = { "ggVG", "Select entire file" },
     ["<C-d>"] = { "yyp", "Duplicate the current line" },
-    ["<C-Down>"] = { ":$<CR>", "Move cursor to the bottom of the page" },
     ["<C-Up>"] = { ":1<CR>", "Move cursor to the top of the page" },
+    ["<C-Down>"] = { ":$<CR>", "Move cursor to the bottom of the page" },
     ["<C-z>"] = { ":undo<CR>", "Undo" },
     ["<C-e>"] = { ":redo<CR>", "Redo" },
     ["<leader>zm"] = { "<cmd>ZenMode<CR>", "Mode Zen" },
@@ -66,9 +66,9 @@ M.Move = {
     -- switch between windows
     ["<C-S-Left>"] = { "<C-w>h", "Window left" },
     ["<C-S-Right>"] = { "<C-w>l", "Window right" },
-    -- move between lines / words
-    ["<C-Left>"] = { "^", "between lines / words (left)" },
-    ["<C-Right>"] = { "$", "between lines / words (right)" },
+    -- move between words
+    ["<C-Left>"] = { "b", "Move cursor to the left of the word" },
+    ["<C-Right>"] = { "e", "Move cursor to the right of the word" },
   },
 }
 
@@ -95,7 +95,7 @@ M.dap = {
 -- Markdown
 M.markdown_preview = {
   n = {
-    ["<leader>mp"] = { "<cmd> MarkdownPreview<CR>", "Open Preview" },
+    ["<leader>mp"] = { "<cmd> MarkdownPreview<CR>", "OpenX Preview" },
     ["<leader>mc"] = { "<cmd> MarkdownPreviewStop<CR>", "Close Preview" },
   },
 }
