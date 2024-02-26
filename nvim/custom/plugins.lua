@@ -8,7 +8,7 @@ local plugins = { -- override plugin configs
     opts = {
       ensure_installed = { -- lua
         "lua-language-server",
-        "stylua", -- web
+        "stylua",       -- web
         "html-lsp",
         "css-lsp",
         "prettier", -- c/c++
@@ -17,12 +17,12 @@ local plugins = { -- override plugin configs
         "codelldb", -- python
         "pyright",
         "black",
-        "debugpy", -- node.js
+        "debugpy",      -- node.js
         "typescript-language-server",
         "js-debug-adapter", -- markdown
         "deno",
         "markdown-toc", -- latex
-        "latexindent", -- git
+        "latexindent",  -- git
         "gitui",
       },
     },
@@ -30,15 +30,15 @@ local plugins = { -- override plugin configs
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
+    end,           -- Override to setup mason-lspconfig
     dependencies = { -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
         event = "VeryLazy",
         config = function()
-          require "custom.configs.null-ls"
+          require("custom.configs.null-ls")
         end,
       },
     },
@@ -150,7 +150,7 @@ local plugins = { -- override plugin configs
   {
     "mfussenegger/nvim-dap",
     config = function(_, _)
-      require("core.utils").load_mappings "dap"
+      require("core.utils").load_mappings("dap")
     end,
   },
   {
@@ -166,8 +166,8 @@ local plugins = { -- override plugin configs
     event = "VeryLazy",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
+      local dap = require("dap")
+      local dapui = require("dapui")
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -188,7 +188,7 @@ local plugins = { -- override plugin configs
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings "dap_python"
+      require("core.utils").load_mappings("dap_python")
     end,
   },
   {
@@ -292,22 +292,32 @@ local plugins = { -- override plugin configs
         -- window_controls = v:true,
       }
     end,
-  }, -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
+  },
   {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     opts = {
       -- add any options here
     },
     lazy = true,
   },
-
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
     opts = {
       {
-        signs = true, -- show icons in the signs column
+        signs = true,  -- show icons in the signs column
         sign_priority = 8, -- sign priority
         -- keywords recognized as todo comments
         keywords = {
@@ -322,13 +332,13 @@ local plugins = { -- override plugin configs
             color = "info",
           },
           HACK = {
-            icon = " ",
+            icon = "󰻌 ",
             color = "warning",
           },
           WARN = {
             icon = " ",
             color = "warning",
-            alt = { "WARNING", "XXX" },
+            alt = { "WARNING", "XXX", "WARN" },
           },
           PERF = {
             icon = " ",
@@ -344,10 +354,15 @@ local plugins = { -- override plugin configs
             color = "test",
             alt = { "TESTING", "PASSED", "FAILED" },
           },
+          QUESTION = {
+            icon = " ",
+            color = "question",
+            alt = { "?", "??", "???" },
+          },
         },
         gui_style = {
-          fg = "NONE", -- The gui style to use for the fg highlight group.
-          bg = "BOLD", -- The gui style to use for the bg highlight group.
+          fg = "NONE",     -- The gui style to use for the fg highlight group.
+          bg = "BOLD",     -- The gui style to use for the bg highlight group.
         },
         merge_keywords = true, -- when true, custom keywords will be merged with the defaults
         -- highlighting of the line containing the todo comment
@@ -355,16 +370,16 @@ local plugins = { -- override plugin configs
         -- * keyword: highlights of the keyword
         -- * after: highlights after the keyword (todo text)
         highlight = {
-          multiline = true, -- enable multine todo comments
-          multiline_pattern = "^.", -- lua pattern to match the next multiline from the start of the matched keyword
-          multiline_context = 10, -- extra lines that will be re-evaluated when changing a line
-          before = "", -- "fg" or "bg" or empty
-          keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
-          after = "fg", -- "fg" or "bg" or empty
+          multiline = true,           -- enable multine todo comments
+          multiline_pattern = "^.",   -- lua pattern to match the next multiline from the start of the matched keyword
+          multiline_context = 10,     -- extra lines that will be re-evaluated when changing a line
+          before = "",                -- "fg" or "bg" or empty
+          keyword = "wide",           -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
+          after = "fg",               -- "fg" or "bg" or empty
           pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlighting (vim regex)
-          comments_only = true, -- uses treesitter to match keywords in comments only
-          max_line_len = 400, -- ignore lines longer than this
-          exclude = {}, -- list of file types to exclude highlighting
+          comments_only = true,       -- uses treesitter to match keywords in comments only
+          max_line_len = 400,         -- ignore lines longer than this
+          exclude = {},               -- list of file types to exclude highlighting
         },
         -- list of named colors where we try to extract the guifg from the
         -- list of highlight groups or use the hex color if hl not found as a fallback
@@ -375,6 +390,7 @@ local plugins = { -- override plugin configs
           hint = { "DiagnosticHint", "#10B981" },
           default = { "Identifier", "#7C3AED" },
           test = { "Identifier", "#FF00FF" },
+          question = { "DiagnosticInfo", "#2b00ff" },
         },
         search = {
           command = "rg",

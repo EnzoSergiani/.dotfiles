@@ -26,7 +26,6 @@ fi
 
 unset rc
 
-
 # Custom alias
 alias ..="cd .."
 alias ...="cd ../.."
