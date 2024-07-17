@@ -1,2 +1,1 @@
-require "nvchad.options"
-
+require("nvchad.options")

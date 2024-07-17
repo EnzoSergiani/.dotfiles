@@ -27,7 +27,6 @@ M.ui = {
 		},
 	},
 
-
 	hl_override = {
 		NvDashAscii = {
 			fg = "#E2EAED",
