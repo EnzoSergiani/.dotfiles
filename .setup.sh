@@ -4,11 +4,22 @@ set -e
 
 # name of packages to install
 PACKAGES=(
+    "unzip"
+    "tar"
+    "man-db"
+    "vlc"
     "hyprland"
     "firefox"
     "alacritty"
+    "nautilus"
     "neovim"
-    "rofi"
+    "wofi"
+    "python"
+    "nodejs"
+    "npm"
+    "openssh"
+    "gnome-disk-utility"
+    "parted"
 )
 
 # update
@@ -34,6 +45,11 @@ ln -sf ~/.dotfiles/nvim/init.lua ~/.config/nvim/lua/plugin/init.lua
 # hyprland
 mkdir -p ~/.config/hypr
 ln -sf ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+
+# wofi
+mkdir -p ~/.config/wofi
+ln -sf ~/.dotfiles/wofi/style.css ~/.config/wofi/
+ln -sf ~/.dotfiles/wofi/config ~/.config/wofi/
 
 echo "Installation and configuration done."
 
