@@ -8,18 +8,33 @@ PACKAGES=(
     "tar"
     "man-db"
     "vlc"
+    "eog"
     "hyprland"
     "firefox"
     "alacritty"
     "nautilus"
     "neovim"
     "wofi"
+    "hyprpaper"
     "python"
     "nodejs"
     "npm"
     "openssh"
     "gnome-disk-utility"
     "parted"
+    "pipewire"
+    "wireplumber"
+    "signal-desktop"
+    "discord"
+    "xdg-desktop-portal"
+    #"..."
+    "bluez"
+    "bluez-utils"
+    "blueberry"
+    "spotify-launcher"
+    "hyprlock"
+    "neofetch"
+    "wget"
 )
 
 # update
@@ -50,6 +65,15 @@ ln -sf ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
 mkdir -p ~/.config/wofi
 ln -sf ~/.dotfiles/wofi/style.css ~/.config/wofi/
 ln -sf ~/.dotfiles/wofi/config ~/.config/wofi/
+
+# hyprpaper
+ln -sf ~/.dotfiles/hypr/hyprpaper.conf ~/.config/hypr/
+
+# waybar
+ln -sf ~/.dotfiles/waybar/config.jsonc ~/.config/waybar/ 
+ln -sf ~/.dotfiles/waybar/style.css ~/.config/waybar/
+
+# dunst
 
 echo "Installation and configuration done."
 
