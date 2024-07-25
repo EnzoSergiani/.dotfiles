@@ -1,5 +1,6 @@
 // -*- mode: jsonc -*-
 [{
+   "output": ["eDP-1"],
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 24, // Waybar height (to be removed for auto height)
@@ -54,8 +55,10 @@
     "mpris": {
         "format": " {status_icon} {dynamic}",
         "interval": 1,
+        "artist-len": 20,
+        "title-len": 20,
         "dynamic-len": 50,
-        "elipsis": true,
+        "ellipsis": " ...",
 	      "status-icons": {
 		        "playing": " ▶ ",
 		        "paused": "  ",
