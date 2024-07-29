@@ -20,7 +20,7 @@
         "cava",
         "mpris",
         "network",
-	      "wireplumber",
+	      "pulseaudio",
         "backlight",
         "custom/weather", 
         "battery",
@@ -55,12 +55,12 @@
     "mpris": {
         "format": " {status_icon} {dynamic}",
         "interval": 1,
-        "artist-len": 20,
-        "title-len": 20,
-        "dynamic-len": 50,
+        "artist-len": 15,
+        "title-len": 15,
+        "dynamic-len": 40,
         "ellipsis": " ...",
 	      "status-icons": {
-		        "playing": " ▶ ",
+		        "playing": " ▶",
 		        "paused": "  ",
 		        "stopped": "  "
 	  },
@@ -131,16 +131,15 @@
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "]
     },
-    "wireplumber": {
-        "scroll-step": 5, // %, can be a float
+    "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%  ",
-        "format-bluetooth-muted": "󰆪 {icon}  ",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth-muted": "󰆪 {icon} ",
         "format-muted": "󰆪",
         "format-icons": {
             "headphone": "",
-            "hands-free": "󰂑",
-            "headset": "󰂑",
+            //"hands-free": "󰂑",
+            //"headset": "󰂑",
             "phone": "",
             "portable": "",
             "car": "",

@@ -2,7 +2,7 @@ local M = {}
 
 M.ui = {
 	theme = "onedark",
-
+  transparency = false,
 	nvdash = {
 		load_on_startup = true,
 		header = {
