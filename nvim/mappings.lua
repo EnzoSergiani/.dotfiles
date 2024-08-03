@@ -6,43 +6,46 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- Line
-map("n", "<C-l>", "V", { desc = " Line selected" })
-map("v", "<C-c>", "+y", { desc = "Line copied" })
-map("i", "<C-v>", "+p", { desc = "Line pasted" })
-map("v", "<C-x>", "+x", { desc = "Line cuted" })
-map("i", "<C-d>", "+yyp", { desc = "Line duplicated" })
-map("v", "<Up>", ":move '>-2<CR>gv=gv", { desc = "Line move up" })
-map("v", "<Down>", ":move '>+1<CR>gv=gv", { desc = "Line move down" })
+map("n", "<C-l>", function() vim.cmd("normal! V") end, { desc = "Select entire line" })
+map("v", "<C-c>", function() vim.cmd('normal! "+y') end, { desc = "Line copied" })
+map("i", "<C-v>", function() vim.cmd('normal! <C-r>+') end, { desc = "Line pasted" })
+map("v", "<C-x>", function() vim.cmd('normal! "+x') end, { desc = "Line cut" })
+map("i", "<C-d>", function() vim.cmd('normal! <Esc>"+yyp') end, { desc = "Line duplicated" })
 
 -- Action
-map("n", "<C-a>", "ggVG", { desc = "Action select all" })
-map("n", "<C-z>", ":undo<CR>", { desc = "Action undo" })
-map("n", "<C-e>", ":redo<CR>", { desc = "Action redo" })
-map("i", "<C-z>", "<Esc>:undo<CR>i", { desc = "Action undo" })
-map("i", "<C-e>", "<Esc>:redo<CR>i", { desc = "Action redo" })
-map("n", "<C-w>", ":bd<CR>", { desc = "Action close buffer" })
+map("n", "<C-z>", function() vim.cmd("undo") end, { desc = "Action undo" })
+map("n", "<C-e>", function() vim.cmd("redo") end, { desc = "Action redo" })
+map("i", "<C-z>", function() vim.cmd("undo") end, { desc = "Action undo" })
+map("i", "<C-e>", function() vim.cmd("redo") end, { desc = "Action redo" })
+map("n", "<C-a>", function() vim.cmd("normal! ggVG") end, { desc = "Action select all" })
+map("n", "<C-w>", function() vim.cmd("bd") end, { desc = "Action close buffer" })
+map("n", "<C-s>", function() vim.cmd("w") end, { desc = "Action save" })
+map("i", "<C-s>", function() vim.cmd("write") end, { desc = "Sauvegarder fichier" })
 
 -- Move
-map("n", "<C-S-Left>", "<C-w>h", { desc = "Move to window left" })
-map("n", "<C-S-Right>", "<C-w>l", { desc = "Move ro window right" })
-map("n", "<C-left>", "b", { desc = "Move cursor to the left of the word" })
-map("n", "<C-right>", "e", { desc = "Move cursor to the right of the word" })
-map("n", "<C-S-Up>", ":1<CR>", { desc = "Move cursor to the top of the page" })
-map("n", "<C-S-Down>", ":$<CR>", { desc = "Move cursor to the bottom of the page" })
-map("n", "<C-Up>", ":<C-U>execute 'normal! ' . (v:count1 * 10) . 'k'<CR>", { desc = "Move cursor 10 lines up" })
-map("n", "<C-Down>", ":<C-U>execute 'normal! ' . (v:count1 * 10) . 'j'<CR>", { desc = "Move cursor 10 lines down" })
-
--- Mapping
--- map("n", "<C-:>", "gcc", { desc="Comment the current line"} )
+map("n", "<C-S-Left>", function() vim.cmd("wincmd h") end, { desc = "Move to window left" })
+map("n", "<C-S-Right>", function() vim.cmd("wincmd l") end, { desc = "Move to window right" })
+map("n", "<C-left>", function() vim.cmd("normal! b") end, { desc = "Move cursor to the left of the word" })
+map("n", "<C-right>", function() vim.cmd("normal! e") end, { desc = "Move cursor to the right of the word" })
+map("n", "<C-S-Up>", function() vim.cmd("normal! gg") end, { desc = "Move cursor to the top of the page" })
+map("n", "<C-S-Down>", function() vim.cmd("normal! G") end, { desc = "Move cursor to the bottom of the page" })
+map("n", "<C-Up>", function() vim.cmd("normal! 10k") end, { desc = "Move cursor 10 lines up" })
+map("n", "<C-Down>", function() vim.cmd("normal! 10j") end, { desc = "Move cursor 10 lines down" })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope <cr>", { desc = " Find files" })
-map("n", "<leader>td", ":TodoTelescope<CR>", { desc = "Find TODO " })
-map("n", "<leader>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = " Folder " })
+
+map("n", "<C-Up>", function() vim.cmd("normal! 10k") end, { desc = "Move cursor 10 lines up" })
+map("n", "<C-Down>", function() vim.cmd("normal! 10j") end, { desc = "Move cursor 10 lines down" })
+
+-- Telescope
+map("n", "<leader>ff", function() vim.cmd("Telescope find_files") end, { desc = "Find files" })
+map("n", "<leader>td", function() vim.cmd("TodoTelescope") end, { desc = "Find TODO" })
+map("n", "<leader>fb", function() vim.cmd("Telescope file_browser path=%:p:h select_buffer=true") end,
+  { desc = "Folder" })
 
 -- Markdown preview
-map("n", "<leader>mp", "<cmd> MarkdownPreview<CR>", { desc = "MarkdownPreview start" })
-map("n", "<leader>mc", "<cmd> MarkdownPreviewStop<CR>", { desc = "MarkdownPreview close" })
+-- map("n", "<leader>mp", function() vim.cmd("MarkdownPreview") end, { desc = "MarkdownPreview start" })
+-- map("n", "<leader>mc", function() vim.cmd("MarkdownPreviewStop") end, { desc = "MarkdownPreview close" })
 
 -- Other
-map("n", "<leader>zm", "<cmd>ZenMode<CR>", { desc = "Mode Zen" })
+-- map("n", "<leader>zm", function() vim.cmd("ZenMode") end, { desc = "Mode Zen" })

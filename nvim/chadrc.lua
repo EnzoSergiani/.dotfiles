@@ -1,41 +1,22 @@
 local M = {}
 
 M.ui = {
-	theme = "onedark",
+  theme = "onedark",
   transparency = false,
-	nvdash = {
-		load_on_startup = true,
-		header = {
-			"                                  ",
-			"               █                ",
-			"              ███               ",
-			"             █████              ",
-			"            ███████             ",
-			"            █████████             ",
-			"            ██     ██             ",
-			"            ██ ███ ██             ",
-			"            ██ ███ ██             ",
-			"            ██ ███ ██             ",
-			"            ██ ███ ██             ",
-			"            ██     ██             ",
-			"            █████████             ",
-			"            ███████             ",
-			"             █████              ",
-			"              ███               ",
-			"               █                ",
-			"                                  ",
-		},
-	},
+  nvdash = {
+    load_on_startup = false,
+    header = {},
+  },
 
-	hl_override = {
-		NvDashAscii = {
-			fg = "#E2EAED",
-			bg = "#295844",
-		},
-		NvDashButtons = {
-			fg = "#E2EAED",
-		},
-	},
+  hl_override = {
+    NvDashAscii = {
+      fg = "#E2EAED",
+      bg = "#295844",
+    },
+    NvDashButtons = {
+      fg = "#E2EAED",
+    },
+  },
 }
 
 return M
