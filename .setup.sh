@@ -93,11 +93,8 @@ else
   exit 1
 fi
 
-#stow -d . -t ~/.config nvim
-
 mkdir -p ~/.config/{dunst,fastfetch,hypr,kitty,nvim/scripts,power_menu,waybar,wofi}
 
-# Créer les liens symboliques
 ln -sf ~/.dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
 
 ln -sf ~/.dotfiles/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
