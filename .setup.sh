@@ -52,6 +52,8 @@ PACKAGES=(
   "ripgrep"
   "signal-desktop"
   "stow"
+  "tree-sitter"
+  "tree-sitter-cli"
   "unzip"
   "virtualbox"
   "vlc"
@@ -105,13 +107,14 @@ ln -sf ~/.dotfiles/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
 
 ln -sf ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
-ln -sf ~/.dotfiles/nvim/init.lua ~/.config/nvim/lua/plugins/init.lua
-ln -sf ~/.dotfiles/nvim/lazy.lua ~/.config/nvim/lua/configs/lazy.lua
-ln -sf ~/.dotfiles/nvim/chadrc.lua ~/.config/nvim/lua/chadrc.lua
-ln -sf ~/.dotfiles/nvim/conform.lua ~/.config/nvim/lua/configs/conform.lua
-ln -sf ~/.dotfiles/nvim/options.lua ~/.config/nvim/lua/options.lua
-ln -sf ~/.dotfiles/nvim/mappings.lua ~/.config/nvim/lua/mappings.lua
-ln -sf ~/.dotfiles/nvim/lspconfig.lua ~/.config/nvim/lua/configs/lspconfig.lua
+ln -sf ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -sf ~/.dotfiles/nvim/lua/chadrc.lua ~/.config/nvim/lua/chadrc.lua
+ln -sf ~/.dotfiles/nvim/lua/options.lua ~/.config/nvim/lua/options.lua
+ln -sf ~/.dotfiles/nvim/lua/mappings.lua ~/.config/nvim/lua/mappings.lua
+ln -sf ~/.dotfiles/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
+ln -sf ~/.dotfiles/nvim/lua/configs/lazy.lua ~/.config/nvim/lua/configs/lazy.lua
+ln -sf ~/.dotfiles/nvim/lua/configs/conform.lua ~/.config/nvim/lua/configs/conform.lua
+ln -sf ~/.dotfiles/nvim/lua/configs/lspconfig.lua ~/.config/nvim/lua/configs/lspconfig.lua
 
 ln -sf ~/.dotfiles/waybar/config.jsonc ~/.config/waybar/config.jsonc
 ln -sf ~/.dotfiles/waybar/style.css ~/.config/waybar/style.css
