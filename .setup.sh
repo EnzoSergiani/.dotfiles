@@ -49,6 +49,7 @@ PACKAGES=(
   "pipewire-audio"
   "pipewire-jack"
   "pipewire-pulse"
+  "psensor",
   "ripgrep"
   "signal-desktop"
   "stow"
@@ -60,6 +61,7 @@ PACKAGES=(
   "waybar"
   "wget"
   "wireplumber"
+  "wl-clipboard",
   "wmctrl"
   "wofi"
   "xdg-user-dirs"
