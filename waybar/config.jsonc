@@ -1,57 +1,27 @@
-// -*- mode: jsonc -*-
-[{
-   "output": ["eDP-1"],
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces",
-        "sway/window",
-        "sway/mode",
-        "sway/scratchpad"
-    ],
-    "modules-center": [
-      "clock"
-    ],
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 4,
+    "exclusive": true,
+    "gtk-layer-shell": false,
+    "passthrough": false,
+    "fixed-center": true,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
     "modules-right": [
-        "cava",
         "mpris",
+        "custom/sep",
         "network",
-	      "pulseaudio",
-        "backlight",
-        "custom/weather", 
+        "pulseaudio",
         "battery",
-        "tray"
+        "custom/sep",
+        "tray",
+        "custom/sep",
+        "custom/power",
     ],
-    // Modules configuration
-    
-    "sway/window": {
-        "format": "{title}",
-        "max-length": 80,
-        "all-outputs": true
-    },
-    "cava": {
-        //"cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
-	      "framerate": 30,
-	      "autosens": 1,
-	      "bars": 14,
-	      "lower_cutoff_freq": 50,
-	      "higher_cutoff_freq": 10000,
-	      "method": "pulse",
-	      "source": "auto",
-	      "stereo": true,
-	      "bar_delimiter": 0,
-	      "noise_reduction": 0.77,
-	      "input_delay": 2,
-        "hide_on_silence": true,
-	      "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-	      "actions": {
-	      "on-click-right": "mode"
-	  }
-    },
+
     "mpris": {
         "format": " {status_icon} {dynamic}",
         "interval": 1,
@@ -64,58 +34,17 @@
 		        "paused": "  ",
 		        "stopped": "  "
 	  },
-
 	  "dynamic-order": ["artist", "title"]
-	  //"ignored-players": ["firefox"]
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": " ",
-            "deactivated": " " 
-        }
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "Ethernet 󰈀 ",
+        "tooltip-format": "{ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected ⚠"
     },
-    "sway/mode": {
-        "format": "{}"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 10
-    },
-    "load": {
-        "format": " {}"
-    },
-    "cpu": {
-        "format": " {}%",
-        "interval": 2,
-        "tooltip": false,
-        "on-click": "gnome-system-monitor"
-    },
-    "clock": {
-        "format": "{:L%A %d %B | %H:%M}",
-        "locale":"fr_FR.utf8",
-        "timezone": "Europe/Paris",
-        "tooltip-format": "<tt><big>{calendar}</big></tt>"
-    },
-    "custom/weather": {
-        "format": "{}°",
-        "tooltip": true,
-        "interval": 3600,
-        "exec": "wttrbar -l zh-tw --icon-family nerd",
-        "return-type": "json"
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
+
     "battery": {
         "states": {
             // "good": 95,
@@ -131,28 +60,61 @@
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "]
     },
+
+    "wlr/workspaces": {
+        "on-click": "activate",
+        "format": "{name}",
+        "all-outputs": true,
+        "disable-scroll": false,
+        "active-only": false,
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.{72}).*": "$1..",
+        },
+        "icon": true,
+        "icon-size": 20,
+    },
+
+    "tray": {
+        "show-passive-items": true,
+        "spacing": 10,
+    },
+
+    "clock": {
+        "format": "{:L%A %d %B, %H:%M}",
+        "locale":"fr_FR.utf8",
+        "timezone": "Europe/Paris",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>"
+    },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
-        "format-bluetooth-muted": "󰆪 {icon} ",
-        "format-muted": "󰆪",
+        "format-bluetooth": " {volume}%" ,
+        "format-muted": "  muted",
         "format-icons": {
-            "headphone": "",
-            //"hands-free": "󰂑",
-            //"headset": "󰂑",
+            "headphone": " ",
+            "hands-free": "󰂑",
+            "headset": "󰂑",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [" ", " ", " "]
+            "default": [" ", " ", " "],
         },
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-right": "pavucontrol"
+        "on-click-middle": "pamixer -t",
+        "on-click": "pavucontrol",
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%)  ",
-        "format-ethernet": "Ethernet 󰈀 ",
-        "tooltip-format": "{ipaddr}/{cidr}",
-        "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": "Disconnected ⚠"
-    }
-}]
+
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false,
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "~/.dotfiles/scripts/power_menu/power_menu.sh &",
+        "format": "⏻ ",
+    },
+}
