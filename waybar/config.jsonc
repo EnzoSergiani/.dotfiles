@@ -153,6 +153,6 @@
         "format-ethernet": "Ethernet 󰈀 ",
         "tooltip-format": "{ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP)  ",
-        "format-disconnected": "Disconnected ⚠ "
+        "format-disconnected": "Disconnected ⚠"
     }
 }]
