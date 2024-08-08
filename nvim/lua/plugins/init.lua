@@ -69,6 +69,17 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+		opts = {
+			lsp = {
+				signature = {
+					enabled = false,
+				},
+			},
+		},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
 		opts = {},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
