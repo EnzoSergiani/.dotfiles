@@ -21,6 +21,7 @@ PACKAGES=(
   "fastfetch"
   "firefox"
   "fprintd"
+  "fzf"
   "gimp"
   "git"
   "gnome-calculator"

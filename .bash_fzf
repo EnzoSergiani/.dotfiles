@@ -1,0 +1,46 @@
+# -----------------------
+# fzf
+# -----------------------
+
+# Open the selected file with the default application based on file type
+ff() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0 --preview='cat {}'))
+   if [[ -n "${files[*]}" ]]; then
+    for file in "${files[@]}"; do
+      xdg-open "$file"
+    done
+  fi
+}
+
+
+# show image
+# fzf --preview 'kitty icat --clear --transfer-mode=memory --stdin=no --place="${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0" {}; seq 100'
+
+# Move to a child directory
+fd() {
+  local dir
+  dir=$(find "${1:-.}" -type d -print 2> /dev/null | fzf --preview 'ls -la {}' --header="Select a directory to navigate" +m) &&
+  cd "$dir"
+}
+
+# history
+fh() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+fs() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
+# Customize fzf colors
+export FZF_DEFAULT_OPTS='
+  --color=fg:#d0d0d0,hl:#d0d0d0,fg+:#eeeeee,hl+:#d0d0d0,bg:-1,bg+:#000000
+  --color=info:#d0d0d0,prompt:#d0d0d0,pointer:#d0d0d0,marker:#d0d0d0,spinner:#d0d0d0,header:#d0d0d0
+  --border="rounded" --border-label="" --preview-window="border-rounded" 
+  --prompt=" "
+  --marker=""
+  --pointer=""
+  --separator="─"
+  --scrollbar="│"
+'
