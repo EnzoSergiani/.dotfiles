@@ -5,7 +5,7 @@
 # Open the selected file with the default application based on file type
 ff() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0 --preview='cat {}'))
-   if [[ -n "${files[*]}" ]]; then
+  if [[ -n "${files[*]}" ]]; then
     for file in "${files[@]}"; do
       xdg-open "$file"
     done
@@ -30,7 +30,35 @@ fh() {
 
 fs() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  local file
+  file=$(rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}")
+  if [[ -n "$file" ]]; then
+      xdg-open "$file"
+  fi
+}
+
+# Pacman: list all packages known
+f_install(){
+  local package
+  package=$(pacman -Slq | fzf --preview 'pacman -Si {}')
+  if [ -n "$package" ]; then
+    echo "You have selected: $package"
+    sudo pacman -S "$package"
+  fi
+}
+
+# Pacman: list all packages installed
+f_list(){
+  pacman -Qq | fzf --preview 'pacman -Qil {}' --bind 'enter:execute(pacman -Qil {} | less)'
+}
+
+f_remove(){
+  local package
+  package=$(pacman -Qq | fzf --preview 'pacman -Qil {}')
+  if [ -n "$package" ]; then
+    echo "You have selected: $package"
+    sudo pacman -Rns "$package"
+  fi
 }
 
 # Customize fzf colors

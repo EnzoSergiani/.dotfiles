@@ -21,10 +21,9 @@ alias mkdir='mkdir -p'
 
 # Package management
 alias update='sudo pacman -Syu'
-alias search='pacman -Ss'
-alias install='sudo pacman -S'
-alias remove='sudo pacman -R'
-alias list='pacman -Qe'
+alias install='f_install'
+alias remove='f_remove'
+alias list='f_list'
 
 # Developer shortcuts
 alias python='python3'
