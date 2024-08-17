@@ -9,7 +9,7 @@ M.ui = {
 	},
 
 	statusline = {
-		theme = "minimal",
+		theme = "default",
 		separator_style = "round",
 	},
 

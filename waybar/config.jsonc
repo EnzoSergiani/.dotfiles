@@ -25,16 +25,16 @@
     "mpris": {
         "format": " {status_icon} {dynamic}",
         "interval": 1,
-        "artist-len": 15,
-        "title-len": 15,
+        "artist-len": 20,
+        "title-len": 20,
         "dynamic-len": 40,
         "ellipsis": " ...",
 	      "status-icons": {
 		        "playing": " ▶",
 		        "paused": "  ",
 		        "stopped": "  "
-	  },
-	  "dynamic-order": ["artist", "title"]
+	      },
+	      "dynamic-order": ["artist", "title"]
     },
 
     "network": {
