@@ -26,9 +26,9 @@
     "mpris": {
         "format": " {status_icon} {dynamic}",
         "interval": 1,
-        "artist-len": 20,
-        "title-len": 20,
-        "dynamic-len": 40,
+        "artist-len": 15,
+        "title-len": 15,
+        "dynamic-len": 30,
         "ellipsis": " ...",
 	      "status-icons": {
 		        "playing": " ▶",
