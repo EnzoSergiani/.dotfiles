@@ -43,8 +43,8 @@ parse_git_details() {
     [[ "$stash_count" -gt 0 ]] && status_output+="⚑ $stash_count "
     [[ -z "$status_output" ]] && status_output="$clean_symbol"
 
-    echo "($branch${local_symbol:+ $local_symbol}${branch_tracking:+ $branch_tracking} | $status_output)"
+    echo " ($branch${local_symbol:+ $local_symbol}${branch_tracking:+ $branch_tracking} | $status_output)"
   fi
 }
 
-export PS1='\u@\h \[\e[32m\]\w\[\e[33m\] $(parse_git_details)\[\e[0m\] \$ '
+export PS1='\u@\h \[\e[32m\]\w\[\e[33m\]$(parse_git_details)\[\e[0m\] \$ '
