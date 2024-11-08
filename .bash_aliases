@@ -12,15 +12,19 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd ~'
+alias bd='cd "$OLDPWD"'
 
-# File operations with confirmation
+# File operations
+#alias cd='cd "$@" && ls'
+cd() { builtin cd "$@" && ls; }
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -r -I --preserve-root'
 alias mkdir='mkdir -p'
+alias cat="bat"
 
 # Package management
-alias update='sudo pacman -Syu'
+alias update='sudo pacman -Syu && yay -Syu --devel'
 alias install='f_install'
 alias remove='f_remove'
 alias list='f_list'
