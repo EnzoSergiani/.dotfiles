@@ -47,4 +47,4 @@ parse_git_details() {
   fi
 }
 
-export PS1='\u@\h \[\e[32m\]\w\[\e[33m\]$(parse_git_details)\[\e[0m\] \$ '
+export PS1='\u@\h \[\e[1;34m\]\w\[\e[33m\]$(parse_git_details)\[\e[0m\] \$ '
