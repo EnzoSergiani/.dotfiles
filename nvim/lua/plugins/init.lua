@@ -142,29 +142,12 @@ return {
 		config = function() end,
 	},
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*",
-		lazy = true,
-		event = "VeryLazy",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {
-			workspaces = {
-				{
-					name = "ISEN",
-					path = "~/Documents/ISEN",
-				},
-				{
-					name = "Notes",
-					path = "~/Documents/Notes",
-				},
-			},
-			ui = {
-				enable = true,
-			},
-		},
-	},
+		"lervag/vimtex",
+		lazy = false,     -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+		  -- VimTeX configuration goes here, e.g.
+		  vim.g.vimtex_view_method = "zathura"
+		end
+	  }
 }
