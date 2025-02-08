@@ -37,29 +37,58 @@ fs() {
   fi
 }
 
-# Pacman: list all packages known
+# Pacman & Yay: list all packages known
 f_install(){
-  local package
-  package=$(pacman -Slq | fzf --preview 'pacman -Si {}')
-  if [ -n "$package" ]; then
+  local package="$1"
+  local manager
+
+  if [ -z "$package" ] || (! pacman -Si "$package" &>/dev/null && ! yay -Si "$package" &>/dev/null); then
+    package=$( (pacman -Slq; yay -Slq) | sort -u | fzf --preview 'pacman -Si {} || yay -Si {}')
+  fi
+
+  if pacman -Si "$package" &>/dev/null; then
+    manager="pacman"
+  elif yay -Si "$package" &>/dev/null; then
+    manager="yay"
+  fi
+
+  if [ -n "$package" ] && [ -n "$manager" ]; then
     echo "You have selected: $package"
-    sudo pacman -S "$package"
+    sudo $manager -S "$package"
+  else
+    echo "No package selected or package not found."
   fi
 }
 
-# Pacman: list all packages installed
+
+
+# Pacman & Yay : list all packages installed
 f_list(){
-  pacman -Qq | fzf --preview 'pacman -Qil {}' --bind 'enter:execute(pacman -Qil {} | less)'
+  (pacman -Qq; yay -Qq) | sort -u | fzf --preview 'pacman -Qil {} || yay -Qil {}' \
+    --bind 'enter:execute(pacman -Qil {} || yay -Qil {} | less)'
 }
 
+# Pacman & Yay : remove all packages installed
 f_remove(){
-  local package
-  package=$(pacman -Qq | fzf --preview 'pacman -Qil {}')
+  local package="$1"
+
+  if [ -z "$package" ] || (! pacman -Qq "$package" &>/dev/null && ! yay -Qq "$package" &>/dev/null); then
+    package=$( (pacman -Qq; yay -Qq) | sort -u | fzf --preview 'pacman -Qil {} || yay -Qil {}')
+  fi
+
   if [ -n "$package" ]; then
     echo "You have selected: $package"
-    sudo pacman -Rns "$package"
+    
+    if pacman -Qq "$package" &>/dev/null; then
+      sudo pacman -Rns "$package"
+    elif yay -Qq "$package" &>/dev/null; then
+      yay -Rns "$package"
+    fi
+  else
+    echo "No package selected or package not found."
   fi
 }
+
 
 # Customize fzf colors
 export FZF_DEFAULT_OPTS='
