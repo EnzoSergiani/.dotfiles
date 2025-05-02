@@ -3,7 +3,7 @@
 # -----------------------
 
 # Open the selected file with the default application based on file type
-ff() {
+fzf_file() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0 --preview='cat {}'))
   if [[ -n "${files[*]}" ]]; then
     for file in "${files[@]}"; do
@@ -12,23 +12,19 @@ ff() {
   fi
 }
 
-
-# show image
-# fzf --preview 'kitty icat --clear --transfer-mode=memory --stdin=no --place="${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}@0x0" {}; seq 100'
-
 # Move to a child directory
-fd() {
+fzf_move() {
   local dir
   dir=$(find "${1:-.}" -type d -print 2> /dev/null | fzf --preview 'ls -la {}' --header="Select a directory to navigate" +m) &&
   cd "$dir"
 }
 
 # history
-fh() {
+fzf_history() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-fs() {
+fzf_search() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
   local file
   file=$(rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}")
@@ -37,53 +33,39 @@ fs() {
   fi
 }
 
-# Pacman & Yay: list all packages known
-f_install(){
+# DNF: list all packages known
+fzf_install(){
   local package="$1"
-  local manager
 
-  if [ -z "$package" ] || (! pacman -Si "$package" &>/dev/null && ! yay -Si "$package" &>/dev/null); then
-    package=$( (pacman -Slq; yay -Slq) | sort -u | fzf --preview 'pacman -Si {} || yay -Si {}')
+  if [ -z "$package" ] || ! dnf info "$package" &>/dev/null; then
+    package=$(dnf list available | awk '{print $1}' | tail -n +2 | fzf --preview 'dnf info {}')
   fi
 
-  if pacman -Si "$package" &>/dev/null; then
-    manager="pacman"
-  elif yay -Si "$package" &>/dev/null; then
-    manager="yay"
-  fi
-
-  if [ -n "$package" ] && [ -n "$manager" ]; then
+  if [ -n "$package" ]; then
     echo "You have selected: $package"
-    sudo $manager -S "$package"
+    sudo dnf install -y "$package"
   else
     echo "No package selected or package not found."
   fi
 }
 
-
-
-# Pacman & Yay : list all packages installed
-f_list(){
-  (pacman -Qq; yay -Qq) | sort -u | fzf --preview 'pacman -Qil {} || yay -Qil {}' \
-    --bind 'enter:execute(pacman -Qil {} || yay -Qil {} | less)'
+# DNF: list all packages installed
+fzf_list(){
+  dnf list installed | awk '{print $1}' | tail -n +2 | fzf --preview 'dnf info {}' \
+    --bind 'enter:execute(dnf info {} | less)'
 }
 
-# Pacman & Yay : remove all packages installed
-f_remove(){
+# DNF: remove all packages installed
+fzf_remove(){
   local package="$1"
 
-  if [ -z "$package" ] || (! pacman -Qq "$package" &>/dev/null && ! yay -Qq "$package" &>/dev/null); then
-    package=$( (pacman -Qq; yay -Qq) | sort -u | fzf --preview 'pacman -Qil {} || yay -Qil {}')
+  if [ -z "$package" ] || ! dnf list installed "$package" &>/dev/null; then
+    package=$(dnf list installed | awk '{print $1}' | tail -n +2 | fzf --preview 'dnf info {}')
   fi
 
   if [ -n "$package" ]; then
     echo "You have selected: $package"
-    
-    if pacman -Qq "$package" &>/dev/null; then
-      sudo pacman -Rns "$package"
-    elif yay -Qq "$package" &>/dev/null; then
-      yay -Rns "$package"
-    fi
+    sudo dnf remove -y "$package"
   else
     echo "No package selected or package not found."
   fi
