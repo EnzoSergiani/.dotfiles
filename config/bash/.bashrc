@@ -12,3 +12,7 @@ done
 unset file
 
 [ -f ~/.config/forgit/forgit.plugin.sh ] && source ~/.config/forgit/forgit.plugin.sh
+
+export PATH=$PATH:/usr/bin/rustup-init
+export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"

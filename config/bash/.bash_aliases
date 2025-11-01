@@ -20,7 +20,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='trash-put'
 alias mkdir='mkdir -p'
-alias cat="bat"
+#alias cat="bat"
 # Package management
 alias update='sudo dnf update -y && sudo dnf upgrade -y'
 # alias install='fzf_install'
