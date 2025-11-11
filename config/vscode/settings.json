@@ -1,0 +1,108 @@
+{
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
+    "workbench.colorTheme": "Atom One Light",
+    "[latex]": {
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix",
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+        "editor.formatOnSave": true
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "groovy": false,
+        "latex": true,
+        "rust": true,
+        "latex-package": true
+    },
+    "workbench.editor.enablePreview": false,
+    "git.confirmSync": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "evenBetterToml.formatter.alignComments": true,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "workbench.editor.autoLockGroups": {
+        "jupyter-notebook": true,
+        "latex-workshop-pdf-hook": true,
+        "mainThreadWebview-markdown.preview": true
+    },
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "render",
+            "tools": [
+                "latex",
+                "biber",
+                "glossaries",
+                "latex",
+                "compression"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-output-directory=build",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "--output-directory",
+                "build",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "glossaries",
+            "command": "makeglossaries",
+            "args": [
+                "-d",
+                "build",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "compression",
+            "command": "gs",
+            "args": [
+                "-sDEVICE=pdfwrite",
+                "-dCompatibilityLevel=1.5",
+                "-dNOPAUSE",
+                "-dQUIET",
+                "-dBATCH",
+                "-dPrinted=false",
+                "-sOutputFile=SERGIANI_Enzo_ISEN_stage-pro_2025.pdf",
+                "build/main.pdf"
+            ]
+        },
+        {
+            "name": "latexindent",
+            "command": "latexindent",
+            "args": [
+                "-c=build",
+                "-g=build/indent.log",
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.outDir": "build",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.formatting.latex": "latexindent",
+    "files.associations": {
+        "*.tikz": "latex"
+    }
+}
