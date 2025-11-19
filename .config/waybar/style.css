@@ -1,0 +1,102 @@
+* {
+  font-family: "JetBrainsMonoNerdFontMono";
+  font-weight: bold;
+  min-height: 0;
+  font-size: 100%;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  padding: 1px;
+}
+
+window#waybar {
+  background-color: #000000;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.8;
+}
+
+window#waybar.empty {
+  background-color: transparent;
+}
+
+tooltip {
+  opacity: 1;
+  border-radius: 0px; /* Removed rounded corners */
+}
+
+tooltip label {
+  padding: 10px;
+  color: #ffffff;
+}
+
+#custom-lumi,
+#custom-cava,
+#clock,
+#cpu,
+#memory,
+#disk,
+#battery,
+#mpris,
+#network,
+#pulseaudio,
+#temperature,
+#workspaces,
+#custom-menu,
+#custom-swaync {
+  border-radius: 0px; /* Removed rounded corners */
+  color: #ffffff;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#window {
+  color: #ffffff;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 0px; /* Removed rounded corners */
+}
+
+#workspaces button {
+  margin: 1px;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 0px; /* Removed rounded corners */
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: #ebdbb2;
+  color: #282828;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+#cpu.warning,
+#memory.warning,
+#disk.warning,
+#temperature.warning, 
+#battery.warning {
+  color: orange;
+}
+
+#cpu.critical,
+#memory.critical,
+#disk.critical,
+#network.disconnected,
+#temperature.critical,
+#battery.critical {
+  color: red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
