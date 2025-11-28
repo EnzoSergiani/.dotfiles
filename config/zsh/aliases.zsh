@@ -1,0 +1,6 @@
+alias ls="lsd"
+alias ll="lsd -lah"
+alias ..="cd .."
+alias grep="grep --color=auto"
+alias open="xdg-open"
+# alias cat="bat"
