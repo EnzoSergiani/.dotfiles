@@ -3,7 +3,7 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./dousai.nix    
+    <home-manager/nixos>
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -26,13 +26,18 @@
     variant = "azerty";
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   users.users.dousai = {
     isNormalUser = true;
-    extraGroups = [ "wheel", "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
-  };home-manager.users.dousai = import "/home/dousai/.dotfiles/nixos/dousai.nix";
+  };
 
   programs.hyprland.enable = true;
+  programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
@@ -49,6 +54,8 @@
 
   system.stateVersion = "25.05";
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
   home-manager.users.dousai = import "/home/dousai/.dotfiles/nixos/dousai.nix";
 }
 
