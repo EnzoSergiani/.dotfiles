@@ -1,10 +1,11 @@
+setopt PROMPT_SUBST
+
 # ---------------------------
 # Couleurs Zsh natives
 # ---------------------------
 
 FG_DIR="%F{blue}"
 FG_USER="%F{green}"
-FG_DIR="%F{blue}"
 FG_GIT="%F{yellow}"
 FG_RESET="%f"
 
@@ -62,5 +63,5 @@ parse_git_details() {
 # ---------------------------
 # Prompt principal
 # ---------------------------
-export PS1="${FG_DIR}[%~]${FG_RESET}\$(parse_git_details) %(?.${FG_USER}.${FG_GIT})${FG_RESET}$ "
-# export PS1="${FG_RESET}[%~]\$(parse_git_details) %(?..)$ ${FG_RESET}"
+PS1="${FG_DIR}[%~]${FG_RESET}\$(parse_git_details) %(?.${FG_USER}.${FG_GIT})${FG_RESET}$ "
+# PS1="${FG_RESET}[%~]\$(parse_git_details) %(?..)$ ${FG_RESET}"

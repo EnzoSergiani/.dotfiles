@@ -1,16 +1,7 @@
-export ZSH="$HOME/.oh-my-zsh"
+ZSH_CUSTOM_CONFIG="$HOME/.dotfiles/config/zsh"
 
-plugins=(
-  git
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  zsh-completions
-)
-
-source $ZSH/oh-my-zsh.sh
-
-ZSH_CUSTOM_CONFIG="/home/$USER/.dotfiles/config/zsh/"
-
-for config_file in $ZSH_CUSTOM_CONFIG/*.zsh; do
-  source "$config_file"
-done
+source "$ZSH_CUSTOM_CONFIG/exports.zsh"
+source "$ZSH_CUSTOM_CONFIG/options.zsh"
+source "$ZSH_CUSTOM_CONFIG/aliases.zsh"
+source "$ZSH_CUSTOM_CONFIG/plugins.zsh"
+source "$ZSH_CUSTOM_CONFIG/prompt.zsh"
