@@ -29,6 +29,8 @@ in
     videos = "videos";
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     btop
     cava
@@ -55,6 +57,70 @@ in
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
+  
+  programs.vscode = {
+  enable = true;
+
+  package = pkgs.vscode;
+    extensions = with pkgs.vscode-extensions; [
+      aaron-bond.better-comments
+      adpyke.codesnap
+      akamud.vscode-theme-onelight
+      burkeholland.simple-react-snippets
+      cschlosser.doxdocgen
+      davidanson.vscode-markdownlint
+      donjayamanne.python-environment-manager
+      dsznajder.es7-react-js-snippets
+      dustypomerleau.rust-syntax
+      ecmel.vscode-html-css
+      formulahendry.auto-close-tag
+      formulahendry.auto-rename-tag
+      github.copilot
+      github.copilot-chat
+      github.vscode-github-actions
+      github.vscode-pull-request-github
+      james-yu.latex-workshop
+      jasonnutter.search-node-modules
+      jeff-hykin.better-cpp-syntax
+      jock.svg
+      mechatroner.rainbow-csv
+      ms-ceintl.vscode-language-pack-fr
+      ms-python.black-formatter
+      ms-python.debugpy
+      ms-python.isort
+      ms-python.python
+      ms-python.vscode-pylance
+      ms-python.vscode-python-envs
+      ms-toolsai.jupyter
+      ms-toolsai.jupyter-keymap
+      ms-toolsai.jupyter-renderers
+      ms-toolsai.vscode-jupyter-cell-tags
+      ms-toolsai.vscode-jupyter-slideshow
+      ms-vscode.cmake-tools
+      ms-vscode.cpptools
+      ms-vscode.cpptools-extension-pack
+      ms-vscode.cpptools-themes
+      ms-vscode.makefile-tools
+      ms-vscode.remote-repositories
+      ms-vsliveshare.vsliveshare
+      pkief.material-icon-theme
+      ritwickdey.liveserver
+      rust-lang.rust-analyzer
+      rvest.vs-code-prettier-eslint
+      streetsidesoftware.code-spell-checker
+      streetsidesoftware.code-spell-checker-french
+      tamasfe.even-better-toml
+      twxs.cmake
+      usernamehw.errorlens
+      vadimcn.vscode-lldb
+      vivaxy.vscode-conventional-commits
+      xabikos.javascriptsnippets
+      yongke.latex-wordcount
+      yzane.markdown-pdf
+      yzhang.markdown-all-in-one
+      zhuangtongfa.material-theme
+    ];
+  };
 
   home.stateVersion = "25.05";
 }
