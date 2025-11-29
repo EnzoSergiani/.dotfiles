@@ -1,5 +1,5 @@
 {
-"include": "~/.dotfiles/.config/waybar/modules.jsonc",
+"include": "~/.dotfiles/config/waybar/modules.jsonc",
 "layer": "top",
 "exclusive": true,
 "passthrough": false,
@@ -20,17 +20,17 @@
 	],
 
 "modules-center": [
-	"hyprland/window",
-	], 
+	"hyprland/window"
+], 
 
 "modules-right": [
-	"cpu", 
-        "disk",
-        "memory",
+  "cpu", 
+  "disk",
+  "memory",
 	"temperature",
-        "network",
+  "network",
 	"pulseaudio",
-        "custom/swaync",
-        "battery",
-	]
+  "custom/swaync",
+  "battery"
+]
 }
