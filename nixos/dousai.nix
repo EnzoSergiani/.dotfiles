@@ -13,22 +13,6 @@ in
     value.source = "${dotfiles}/config/${name}";
   }) configDirs);
 
-
-  home.file.".zshrc".source = "${dotfiles}/config/zsh/.zshrc";
-  home.file.".gitconfig".source = "${dotfiles}/config/git/.gitconfig";
-
-  home.file."Pictures/wallpapers".source = "${dotfiles}/wallpapers";
-
-  xdg.enable = true;
-  xdg.userDirs = {
-    enable = true;
-    desktop = "desktop";
-    downloads = "downloads";
-    music = "music";
-    pictures = "pictures";
-    videos = "videos";
-  };
-
   home.packages = with pkgs; [
     btop
     cava
@@ -52,8 +36,15 @@ in
     waybar
   ];
 
-  programs.zsh.enable = true;
-  programs.git.enable = true;
+  programs.zsh = {
+    enable = true;
+  };
+  programs.git = {
+    enable = true;
+    userName  = "EnzoSergiani";
+    userEmail = "enzo.sergiani@protonmail.com";
+  };
+
   programs.neovim.enable = true;
 
   home.stateVersion = "25.05";
