@@ -1,11 +1,35 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local map = vim.keymap.set
+local cmp = require('cmp')
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+
+-- nvim-cmp
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+  }),
+})
 
 -- Line
 map("n", "<C-l>", function()
@@ -77,3 +101,19 @@ end, { desc = "Find TODO" })
 map("n", "<leader>fb", function()
 	vim.cmd("Telescope file_browser path=%:p:h select_buffer=true")
 end, { desc = "Folder" })
+
+-- Copilot
+vim.keymap.set('i', '<M-m>', 'copilot#AcceptWord()', { 
+  desc = 'Copilot Accept word', 
+  expr = true, 
+  silent = true, 
+  replace_keycodes = false 
+})
+
+vim.keymap.set('i', '<M-l>', 'copilot#AcceptLine()', { 
+  desc = 'Copilot Accept line', 
+  expr = true, 
+  silent = true, 
+  replace_keycodes = false 
+})
+
