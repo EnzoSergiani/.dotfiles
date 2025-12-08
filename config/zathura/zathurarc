@@ -1,0 +1,30 @@
+set recolor false
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#ebdbb2"
+set zoom-step 10
+set adjust-open best-fit
+set selection-clipboard clipboard
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set window-title-basename true
+set window-title-page true
+
+map <C-i> zoom in
+map <C-o> zoom out
+map r reload
+map R rotate
+map i recolor
+map p print
+map w adjust_window width
+map h adjust_window best-fit
+map H zoom fit-height
+map <Tab> toggle_index
+map = zoom default
+map <C-=> zoom in
+map <C--> zoom out
+map <C-f> focus_inputbar :
+map <Down> navigate next
+map <Up> navigate previous
+map <Left> navigate previous
+map <Right> navigate next
+
