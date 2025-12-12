@@ -117,3 +117,39 @@ vim.keymap.set('i', '<M-l>', 'copilot#AcceptLine()', {
   replace_keycodes = false 
 })
 
+-- LaTeX / VimTex
+map("n", "<leader>ll", "<cmd>VimtexCompile<cr>", { desc = "LaTeX Compile (continuous)" })
+map("n", "<leader>lk", "<cmd>VimtexStop<cr>", { desc = "LaTeX Stop" })
+map("n", "<leader>lv", "<cmd>VimtexView<cr>", { desc = "LaTeX View build/main.pdf (SyncTeX)" })
+map("n", "<leader>lt", "<cmd>VimtexTocToggle<cr>", { desc = "LaTeX TOC" })
+map("n", "<leader>le", "<cmd>VimtexErrors<cr>", { desc = "LaTeX Errors" })
+map("n", "<leader>li", "<cmd>VimtexInfo<cr>", { desc = "LaTeX Info" })
+map("n", "<leader>lb", function()
+  vim.cmd("write")
+  vim.cmd("!latexmk")
+end, { desc = "LaTeX Build (biber + glossaries)" })
+map("n", "<leader>lx", function()
+  vim.cmd("write")
+  local output_name = vim.fn.system("grep \"my \\$output_name\" .latexmkrc | sed \"s/.*= '\\(.*\\)';.*/\\1/\""):gsub("%s+", "")
+  if output_name == "" then
+    output_name = "report"
+  end
+  vim.notify("Compression vers " .. output_name .. ".pdf...", vim.log.levels.INFO)
+  vim.cmd("!gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dNOPAUSE -dQUIET -dBATCH -dPrinted=false -sOutputFile=" .. vim.fn.shellescape(output_name) .. ".pdf build/main.pdf")
+  local size_before = vim.fn.system("du -h build/main.pdf | cut -f1"):gsub("%s+", "")
+  local size_after = vim.fn.system("du -h " .. output_name .. ".pdf 2>/dev/null | cut -f1"):gsub("%s+", "")
+  if size_after ~= "" then
+    vim.notify(output_name .. ".pdf créé (" .. size_before .. " → " .. size_after .. ")", vim.log.levels.INFO)
+    vim.cmd("!zathura " .. vim.fn.shellescape(output_name) .. ".pdf &")
+  else
+    vim.notify("Erreur lors de la compression", vim.log.levels.ERROR)
+  end
+end, { desc = "LaTeX Compress (from .latexmkrc)" })
+map("n", "<leader>lc", function()
+  vim.cmd("!latexmk -c")
+end, { desc = "LaTeX Clean aux files" })
+map("n", "<leader>lC", function()
+  vim.cmd("!latexmk -C")
+  vim.notify("Nettoyage complet", vim.log.levels.INFO)
+end, { desc = "LaTeX Clean all" })
+

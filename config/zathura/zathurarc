@@ -8,6 +8,8 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set window-title-basename true
 set window-title-page true
+set synctex true
+set synctex-editor-command "nvim --remote-silent +%{line} %{input}"
 
 map <C-i> zoom in
 map <C-o> zoom out
