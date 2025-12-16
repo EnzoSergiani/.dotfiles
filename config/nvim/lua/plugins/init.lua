@@ -1,8 +1,10 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
+    event = "BufWritePre",
+    config = function()
+      require("conform").setup(require("configs.conform"))
+    end,
   },
 
   -- These are some examples, uncomment them if you want to see them work!
@@ -188,21 +190,6 @@ return {
       { "<localleader>le", "<cmd>VimtexErrors<cr>", desc = "VimTex Errors" },
       { "<localleader>li", "<cmd>VimtexInfo<cr>", desc = "VimTex Info" },
       { "<localleader>lm", "<cmd>VimtexImapsList<cr>", desc = "VimTex Mappings" },
-    },
-  },
-
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        tex = { "latexindent" },
-      },
-      formatters = {
-        latexindent = {
-          command = "latexindent",
-          args = { "-c=build", "-g=build/indent.log", "-" },
-        },
-      },
     },
   },
 
