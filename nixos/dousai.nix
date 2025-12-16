@@ -37,25 +37,49 @@ in
   '';
 
   home.packages = with pkgs; [
-    btop
+    # System 
+    baobab
+    blueman
+    brightnessctl
     cava
-    discord
+    cliphist
     fastfetch
-    firefox
-    hypridle
-    hyprlock
-    hyprpaper
+    git
+    gnome-calculator
+    gnome-disk-utility
+    gnome-system-monitor
+    grim
     kitty
     lazygit
     lsd
-    nautilus
-    ncdu
-    obsidian
+    pavucontrol
+    networkmanagerapplet
     playerctl
-    rofi
+    slurp
+    nautilus
+    wl-clipboard
+    xdg-utils
+
+    # Productivity
+    discord
+    obsidian
     signal-desktop
-    swaynotificationcenter
     virtualbox
+    wireshark
+
+    # Multimedia
+    eog
+    firefox
+    libreoffice
+    vlc
+    zathura
+
+    # Hyprland
+    hypridle
+    hyprlock
+    hyprpaper
+    rofi
+    swaynotificationcenter
     waybar
   ];
 
@@ -69,12 +93,12 @@ in
 
   programs.git = {
     enable = true;
-    userName  = "EnzoSergiani";
+    userName = "EnzoSergiani";
     userEmail = "enzo.sergiani@protonmail.com";
   };
 
   programs.neovim.enable = true;
-  
+
 
   home.stateVersion = "25.05";
 }
