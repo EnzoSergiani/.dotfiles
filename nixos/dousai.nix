@@ -8,13 +8,15 @@ in
   home.username = "dousai";
   home.homeDirectory = "/home/dousai";
 
-  home.file = builtins.listToAttrs (map (name: {
-    name = ".config/${name}";
-    value.source = "${dotfiles}/config/${name}";
-  }) configDirs);
+  home.file = builtins.listToAttrs (map
+    (name: {
+      name = ".config/${name}";
+      value.source = "${dotfiles}/config/${name}";
+    })
+    configDirs);
 
   xdg = {
-    enable = true;   
+    enable = true;
     userDirs = {
       enable = true;
       createDirectories = true;
@@ -29,7 +31,7 @@ in
     };
   };
 
-  home.activation.createCustomDirectories = config.lib.dag.entryAfter ["writeBoundary"] ''
+  home.activation.createCustomDirectories = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \
       ${config.home.homeDirectory}/dev/projects \
       ${config.home.homeDirectory}/dev/vm \

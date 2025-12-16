@@ -14,6 +14,7 @@ local options = {
     markdown = { "prettier" },
     latex = { "latexindent" },
     tex = { "latexindent" },
+    nix = { "nixpkgs_fmt" },
   },
   
   formatters = {
