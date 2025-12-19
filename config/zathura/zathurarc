@@ -25,8 +25,8 @@ map = zoom default
 map <C-=> zoom in
 map <C--> zoom out
 map <C-f> focus_inputbar :
-map <Down> navigate next
-map <Up> navigate previous
+map <Up> scroll-hstep 20
+map <Down> scroll-hstep -20
 map <Left> navigate previous
 map <Right> navigate next
 
