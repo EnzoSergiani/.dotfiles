@@ -3,7 +3,7 @@ return {
     "stevearc/conform.nvim",
     event = "BufWritePre",
     config = function()
-      require("conform").setup(require("configs.conform"))
+      require("conform").setup(require "configs.conform")
     end,
   },
 
@@ -17,82 +17,82 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-		opts = {
-			ensure_installed = {
-				"vim",
-				"lua",
-				"html",
-				"css",
-				"javascript",
-				"typescript",
-				"tsx",
-				"asm",
-				"bash",
-				"c",
-				"cpp",
-				"python",
-				"markdown",
-				"latex",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "asm",
+        "bash",
+        "c",
+        "cpp",
+        "python",
+        "markdown",
+        "latex",
       },
-		},
-	},
-
-  {
-		"nvim-telescope/telescope-file-browser.nvim",
-		lazy = false,
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
+    },
   },
 
   {
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		lazy = false,
-		opts = {},
+    "nvim-telescope/telescope-file-browser.nvim",
+    lazy = false,
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
   },
 
   {
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		lazy = false,
-		opts = {
-			{
-				keywords = {
-					FIX = {
-						icon = " ",
-						color = "error",
-						alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
-					},
-					TODO = {
-						icon = " ",
-						color = "info",
-					},
-					HACK = {
-						icon = "󰻌 ",
-						color = "warning",
-					},
-					WARN = {
-						icon = " ",
-						color = "warning",
-						alt = { "WARNING", "WARN" },
-					},
-					PERF = {
-						icon = " ",
-						alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" },
-					},
-					NOTE = {
-						icon = " ",
-						color = "hint",
-						alt = { "INFO" },
-					},
-					TEST = {
-						icon = " ",
-						color = "test",
-						alt = { "TESTING", "PASSED", "FAILED" },
-					},
-				},
-			},
-		},
-	},
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+    opts = {},
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    opts = {
+      {
+        keywords = {
+          FIX = {
+            icon = " ",
+            color = "error",
+            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+          },
+          TODO = {
+            icon = " ",
+            color = "info",
+          },
+          HACK = {
+            icon = "󰻌 ",
+            color = "warning",
+          },
+          WARN = {
+            icon = " ",
+            color = "warning",
+            alt = { "WARNING", "WARN" },
+          },
+          PERF = {
+            icon = " ",
+            alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" },
+          },
+          NOTE = {
+            icon = " ",
+            color = "hint",
+            alt = { "INFO" },
+          },
+          TEST = {
+            icon = " ",
+            color = "test",
+            alt = { "TESTING", "PASSED", "FAILED" },
+          },
+        },
+      },
+    },
+  },
 
   {
     "folke/noice.nvim",
@@ -107,16 +107,16 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
-    }
+    },
   },
 
   {
     "iamcco/markdown-preview.nvim",
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    ft = { 'markdown' },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
     build = function()
       vim.cmd [[Lazy load markdown-preview.nvim]]
-      vim.fn['mkdp#util#install']()
+      vim.fn["mkdp#util#install"]()
     end,
   },
 
@@ -129,21 +129,9 @@ return {
       vim.g.copilot_filetypes = {
         ["*"] = true,
       }
-    end
+    end,
   },
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
   {
     "lervag/vimtex",
     ft = { "tex" },
@@ -168,15 +156,15 @@ return {
       vim.g.vimtex_quickfix_mode = 0
       vim.g.vimtex_complete_enabled = 1
       vim.g.vimtex_quickfix_ignore_filters = {
-        'Underfull',
-        'Overfull',
-        'Package hyperref Warning',
+        "Underfull",
+        "Overfull",
+        "Package hyperref Warning",
       }
       vim.g.vimtex_syntax_custom_cmds = {
         {
-          name = 'mintinline',
+          name = "mintinline",
           mathmode = 0,
-          concealchar = '',
+          concealchar = "",
         },
       }
     end,
@@ -192,5 +180,4 @@ return {
       { "<localleader>lm", "<cmd>VimtexImapsList<cr>", desc = "VimTex Mappings" },
     },
   },
-
 }

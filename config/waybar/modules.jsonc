@@ -145,7 +145,7 @@
     "format-charging": "[CHG: {capacity}%]",
     "format-plugged": "[CHG: {capacity}%]",
     "format-full": "[BAT: {capacity}%]",
-    "tooltip-format": "Capacity: {capacity}%\nTime left: {time}", 
+    "tooltip-format": "Capacity: {capacity}%\nTime left: {time}",
   },
 
   "disk": {
@@ -159,7 +159,7 @@
     "format-warning": "[STR: {percentage_used}%]",
     "format-critical": "[STR: {percentage_used}%]"
   },
- 
+
   "custom/swaync": {
     "tooltip": true,
     "format": "[{icon}: {}]",

@@ -29,4 +29,3 @@ map <Up> scroll-hstep 20
 map <Down> scroll-hstep -20
 map <Left> navigate previous
 map <Right> navigate next
-

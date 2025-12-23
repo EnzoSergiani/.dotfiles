@@ -21,10 +21,10 @@
 
 "modules-center": [
 	"hyprland/window"
-], 
+],
 
 "modules-right": [
-  "cpu", 
+  "cpu",
   "disk",
   "memory",
 	"temperature",

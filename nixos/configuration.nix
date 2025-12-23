@@ -58,4 +58,3 @@
   home-manager.useUserPackages = true;
   home-manager.users.dousai = import "/home/dousai/.dotfiles/nixos/dousai.nix";
 }
-

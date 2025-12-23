@@ -106,7 +106,7 @@
   font-size: 1.5rem;
 }
 
-.widget-title>button {
+.widget-title > button {
   font-size: 1rem;
   color: @borderc;
   padding: 10px;
@@ -116,7 +116,7 @@
   border-radius: 0px; /* Removed rounded corners */
 }
 
-.widget-title>button:hover {
+.widget-title > button:hover {
   background: @borderc;
   color: #282828;
 }
@@ -125,7 +125,7 @@
   margin: 10px 10px 10px 10px;
 }
 
-.widget-label>label {
+.widget-label > label {
   font-size: 1rem;
   color: @textc;
 }
@@ -137,7 +137,7 @@
   border-radius: 0px; /* Removed rounded corners */
 }
 
-.widget-mpris>box>button {
+.widget-mpris > box > button {
   border-radius: 0px; /* Removed rounded corners */
 }
 

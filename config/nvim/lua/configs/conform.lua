@@ -43,7 +43,7 @@ local options = {
       args = { "-c=build", "-g=build/indent.log", "-" },
     },
   },
-  
+
   format_on_save = {
     timeout_ms = 500,
     lsp_fallback = true,

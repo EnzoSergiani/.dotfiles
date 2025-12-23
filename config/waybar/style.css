@@ -75,14 +75,14 @@ tooltip label {
 
 @keyframes blink {
   50% {
-    opacity: 0.0;
+    opacity: 0;
   }
 }
 
 #cpu.warning,
 #memory.warning,
 #disk.warning,
-#temperature.warning, 
+#temperature.warning,
 #battery.warning {
   color: orange;
 }
