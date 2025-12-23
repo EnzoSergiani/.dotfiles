@@ -23,4 +23,3 @@ sudo ./setup.sh
 ```bash
 sudo nixos-rebuild switch
 ```
-
