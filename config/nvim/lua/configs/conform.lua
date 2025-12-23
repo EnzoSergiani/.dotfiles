@@ -1,22 +1,42 @@
 local options = {
   formatters_by_ft = {
+    -- lua
     lua = { "stylua" },
-    css = { "prettier" },
+    -- bash
+    sh = { "shfmt" },
+    bash = { "shfmt" },
+    zsh = { "shfmt" },
+    -- c/c++
+    c = { "clang_format" },
+    cpp = { "clang_format" },
+    -- python
+    python = { "black" },
+    -- rust
+    rust = { "rustfmt" },
+    -- markdown
+    markdown = { "prettier" },
+    -- latex
+    tex = { "latexindent" },
+    bib = { "bibtex-tidy" },
+    -- yaml/json
+    yaml = { "prettier" },
+    json = { "prettier" },
+    -- toml
+    toml = { "taplo" },
+    -- html/css
     html = { "prettier" },
+    css = { "prettier" },
+    -- javascript/typescript
     javascript = { "prettier" },
     typescript = { "prettier" },
-    tsx = { "prettier" },
-    asm = { "asmfmt" },
-    bash = { "shfmt" },
-    c = { "clang-format" },
-    cpp = { "clang-format" },
-    python = { "black" },
-    markdown = { "prettier" },
-    latex = { "latexindent" },
-    tex = { "latexindent" },
+    javascriptreact = { "prettier" },
+    typescriptreact = { "prettier" },
+    -- nix
     nix = { "nixpkgs_fmt" },
+    -- Universal Formats
+    ["*"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
   },
-  
+
   formatters = {
     latexindent = {
       command = "latexindent",

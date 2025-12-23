@@ -25,4 +25,50 @@ M.ui = {
   },
 }
 
+M.mason = {
+  cmd = true,
+  pkgs = {
+    -- lua
+    "lua-language-server",
+    "stylua",
+    -- bash
+    "bash-language-server",
+    "shfmt",
+    -- c/c++
+    "clangd",
+    "clang-format",
+    -- python
+    "pyright",
+    "ruff",
+    "black",
+    "debugpy",
+    -- rust
+    "rust-analyzer",
+    "rustfmt",
+    -- markdown
+    "marksman",
+    -- latex
+    "texlab",
+    "latexindent",
+    "ltex-ls",
+    "vale",
+    -- yaml/json
+    "yaml-language-server",
+    "json-lsp",
+    -- toml
+    "taplo",
+    -- html/css
+    "html-lsp",
+    "css-lsp",
+    "emmet-ls",
+    -- javascript/typescriptreact
+    "typescript-language-server",
+    "prettier",
+    "eslint_d",
+    -- nix
+    "rnix-lsp",
+    "nixpkgs-fmt",
+  },
+}
+
 return M
