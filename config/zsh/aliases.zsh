@@ -3,6 +3,7 @@ alias /="cd /"
 alias ls="lsd"
 alias ll="lsd -lah"
 alias ..="cd .."
+alias rm="trash-put"
 alias grep="grep --color=auto"
 alias open="xdg-open"
 

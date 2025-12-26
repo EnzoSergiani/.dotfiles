@@ -58,6 +58,7 @@ in
     networkmanagerapplet
     playerctl
     slurp
+    trash-cli
     nautilus
     wl-clipboard
     xdg-utils
