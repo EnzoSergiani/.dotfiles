@@ -18,9 +18,10 @@ local options = {
     -- latex
     tex = { "latexindent" },
     bib = { "bibtex-tidy" },
-    -- yaml/json
+    -- yaml/json/jsonc
     yaml = { "prettier" },
     json = { "prettier" },
+    jsonc = { "prettier" },
     -- toml
     toml = { "taplo" },
     -- html/css
