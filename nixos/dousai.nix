@@ -11,7 +11,7 @@ in
   home.file = builtins.listToAttrs (map
     (name: {
       name = ".config/${name}";
-      value.source = "${dotfiles}/config/${name}";
+      value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/config/${name}";
     })
     configDirs);
 
