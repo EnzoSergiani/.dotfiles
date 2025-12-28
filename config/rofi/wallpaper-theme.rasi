@@ -1,0 +1,55 @@
+@import "colors.rasi"
+
+configuration {
+    show-icons:                  true;
+    font:                        "JetBrainsMono Nerd Font 11";
+}
+
+* {
+    background-colour:           var(background);
+    foreground-colour:           var(foreground);
+    alternate-background:        var(background-alt);
+    normal-background:           var(background);
+    normal-foreground:           var(foreground);
+    selected-normal-background:  var(foreground);
+    selected-normal-foreground:  var(background);
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       1020px;
+    height:                      802px;
+    border:                      1px solid;
+    border-color:                @foreground-colour;
+    background-color:            @background-colour;
+}
+
+mainbox {
+    children:                    [ "listview" ];
+    spacing:                     0px;
+    padding:                     0px;
+    background-color:            @background-colour;
+}
+
+listview {
+    columns:                    4;
+    lines:                      2;
+    spacing:                    0px;
+    padding:                    25px;
+    scrollbar:                  false;
+    background-color:           transparent;
+    layout:                     vertical;
+}
+
+element selected.normal {
+    border:                    2px solid;
+    border-color:              var(foreground);
+}
+
+element-icon {
+    size:                      250px;
+    fixed-size:                true;
+    cursor:                    pointer;
+}
