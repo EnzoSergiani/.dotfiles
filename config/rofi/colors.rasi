@@ -1,13 +1,8 @@
-/**
- * Pure Black & White colorscheme for Rofi
- * Clean, minimal, no accent colors
- */
-
 * {
-    background:        #000000;   /* fond principal */
-    background-alt:    #111111;   /* fond secondaire (léger contraste) */
-    foreground:        #ffffff;   /* texte */
-    selected:          #ffffff;   /* surbrillance blanche */
+    background:        #000000;
+    background-alt:    #111111;
+    foreground:        #ffffff;
+    selected:          #ffffff;
     active:            #ffffff;
     urgent:            #ffffff;
 }

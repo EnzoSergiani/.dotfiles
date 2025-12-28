@@ -1,9 +1,3 @@
-/**
- * Rofi Configuration & Theme
- * Noir & Blanc minimal
- * Sans icônes, avec petit logo de recherche
- */
-
 @import "colors.rasi"
 
 /*****----- Configuration -----*****/
@@ -18,13 +12,11 @@ configuration {
     cycle:                      true;
     case-sensitive:              false;
 
-    /* Display labels (non affichés dans l’UI, mais pour modes internes) */
     display-drun:               "[LAUNCH]";
     display-run:                "[RUN]";
     display-filebrowser:        "[FILES]";
     display-window:             "[WINDOWS]";
 
-    /* Entry format */
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
 }

@@ -51,6 +51,7 @@ in
     gnome-disk-utility
     gnome-system-monitor
     grim
+    imagemagick
     kitty
     lazygit
     lsd
