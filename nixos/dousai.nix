@@ -55,19 +55,21 @@ in
     kitty
     lazygit
     lsd
+    nautilus
     pavucontrol
     networkmanagerapplet
     playerctl
     slurp
     trash-cli
-    nautilus
     wl-clipboard
     xdg-utils
 
     # Productivity
     discord
+    inkscape
     obsidian
     signal-desktop
+    texlive.combined.scheme-full
     virtualbox
     wireshark
 
