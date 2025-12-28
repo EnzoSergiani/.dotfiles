@@ -51,5 +51,4 @@ element selected.normal {
 element-icon {
     size:                      250px;
     fixed-size:                true;
-    cursor:                    pointer;
 }
