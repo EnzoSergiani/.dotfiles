@@ -41,6 +41,7 @@ in
   home.packages = with pkgs; [
     # System
     baobab
+    bibata-cursors
     blueman
     brightnessctl
     cava
