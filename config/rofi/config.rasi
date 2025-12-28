@@ -9,7 +9,8 @@
 /*****----- Configuration -----*****/
 configuration {
     modi:                       "drun,run,filebrowser,window";
-    show-icons:                 false;
+    show-icons:                 true;
+    icon-theme:                 "Papirus";
     matching:                   "normal";
     sort:                       false;
     font:                       "JetBrainsMono Nerd Font 11";
@@ -97,10 +98,11 @@ listview {
 
 /*****----- Elements -----*****/
 element {
-    padding:                     6px 10px;
-    text-color:                  @foreground-colour;
-    background-color:            @background-colour;
-    cursor:                      pointer;
+    padding: 6px 10px;
+    spacing: 8px;
+    text-color: @foreground-colour;
+    background-color: @background-colour;
+    cursor: pointer;
 }
 
 element alternate.normal {
@@ -111,6 +113,16 @@ element alternate.normal {
 element selected.normal {
     background-color:            var(foreground);
     text-color:                  var(background);
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
 }
 
 /*****----- Mode Switcher -----*****/
