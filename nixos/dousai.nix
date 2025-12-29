@@ -2,18 +2,10 @@
 
 let
   dotfiles = "/home/dousai/.dotfiles";
-  configDirs = builtins.attrNames (builtins.readDir "${dotfiles}/config");
 in
 {
   home.username = "dousai";
   home.homeDirectory = "/home/dousai";
-
-  home.file = builtins.listToAttrs (map
-    (name: {
-      name = ".config/${name}";
-      value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/config/${name}";
-    })
-    configDirs);
 
   xdg = {
     enable = true;
@@ -95,16 +87,18 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initContent = builtins.readFile "${dotfiles}/config/zsh/.zshrc";
   };
 
   programs.git = {
     enable = true;
     userName = "EnzoSergiani";
     userEmail = "enzo.sergiani@protonmail.com";
+    extraConfig = {
+      credential.helper = "store";
+    };
   };
 
   programs.neovim.enable = true;
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 }
