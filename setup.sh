@@ -30,10 +30,9 @@ if [ "$CURRENT_DIR" != "$DOTFILES" ]; then
   exit 1
 fi
 
-echo "Updating dotfiles repository..."
-git pull --rebase || {
-  echo "Warning: Git pull failed. Continuing anyway..."
-}
+echo ""
+echo "Cleaning old Home Manager links..."
+find "$CONFIG_DST" -type l -lname '/nix/store/*' -delete 2>/dev/null || true
 
 echo ""
 echo "Linking NixOS configuration..."
@@ -89,16 +88,33 @@ else
 fi
 
 echo ""
+echo "Rebuilding NixOS configuration..."
+nixos-rebuild switch
+
+echo ""
+echo "Verifying and fixing symlinks after Home Manager..."
+for item in "$CONFIG_SRC"/*; do
+  [ -e "$item" ] || continue
+
+  item_name=$(basename "$item")
+  src_path="$item"
+  dst_path="$CONFIG_DST/$item_name"
+
+  if [ -L "$dst_path" ]; then
+    link_target=$(readlink "$dst_path")
+    if [[ "$link_target" == /nix/store/* ]]; then
+      echo "  ⚠ Fixing nix store link: $item_name"
+      rm -f "$dst_path"
+      sudo -u "$SUDO_USER" ln -s "$src_path" "$dst_path"
+    fi
+  fi
+done
+
+echo ""
 echo "=========================================="
 echo "Setup completed successfully!"
 echo "=========================================="
 echo ""
 echo "All configs from ~/.dotfiles/config/ are now linked to ~/.config/"
 echo "Modifications to your dotfiles will take effect immediately."
-echo ""
-echo "For NixOS configuration changes:"
-echo "  sudo nixos-rebuild switch"
-echo ""
-echo "If something goes wrong with NixOS config:"
-echo "  sudo cp $CONFIG_FILE.backup $CONFIG_FILE"
 echo ""

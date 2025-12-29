@@ -17,9 +17,3 @@ cd ~/.dotfiles
 chmod +x ./setup.sh
 sudo ./setup.sh
 ```
-
-### Apply the configuration
-
-```bash
-sudo nixos-rebuild switch
-```
