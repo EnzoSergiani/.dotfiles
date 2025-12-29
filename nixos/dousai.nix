@@ -87,6 +87,9 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    initContent = ''
+      source ${dotfiles}/config/zsh/.zshrc
+    '';
   };
 
   programs.git = {
