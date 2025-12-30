@@ -4,6 +4,7 @@ alias ls="lsd"
 alias ll="lsd -lah"
 alias ..="cd .."
 alias rm="trash-put"
+alias shred-trash='find ~/.local/share/Trash/files -type f -exec shred -u {} + && rm -rf ~/.local/share/Trash/files/* ~/.local/share/Trash/info/*'
 alias -- '-'='cd -'
 
 alias grep="grep --color=auto"
