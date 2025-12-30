@@ -10,18 +10,18 @@
     "persistent-workspaces": {
       "1": [],
       "2": [],
-      "3": []
+      "3": [],
     },
     "format-icons": {
       "active": "[*]",
-      "default": "[ ]"
-    }
+      "default": "[ ]",
+    },
   },
 
   "clock": {
     "interval": 1,
     "format": "[{:L%H:%M, %a %d %b %Y}]",
-    "locale":"fr_FR.utf8",
+    "locale": "fr_FR.utf8",
     "timezone": "Europe/Paris",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -33,16 +33,16 @@
         "days": "<span color='#ebdbb2'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ebdbb2'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
-    }
+      "on-scroll-down": "shift_down",
+    },
   },
 
   "cpu": {
@@ -51,8 +51,8 @@
     "on-click-right": "gnome-system-monitor",
     "states": {
       "warning": 75,
-      "critical": 90
-    }
+      "critical": 90,
+    },
   },
 
   "hyprland/window": {
@@ -63,8 +63,8 @@
     "offscreen-css-text": "",
     "rewrite": {
       "^(.+)$": "[$1]",
-      "^$": ""
-    }
+      "^$": "",
+    },
   },
 
   "memory": {
@@ -76,8 +76,8 @@
     "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title btop sh -c 'btop'",
     "states": {
       "warning": 75,
-      "critical": 90
-    }
+      "critical": 90,
+    },
   },
 
   "mpris": {
@@ -90,12 +90,12 @@
     "tooltip-format": "{artist} — {title}\nAlbum: {album}",
     "scroll-step": 5.0,
     "smooth-scrolling-threshold": 1,
-    "ignore-players": ["vlc", "spotifyd"],  // ignorer les players non désirés
+    "ignore-players": ["vlc", "spotifyd"],
     "status-icons": {
       "paused": "",
       "playing": "",
-      "stopped": ""
-    }
+      "stopped": "",
+    },
   },
 
   "pulseaudio": {
@@ -105,7 +105,7 @@
     "scroll-step": 5.0,
     "on-click": "pavucontrol -t 3",
     "tooltip-format": "{icon} {desc} | {volume}%",
-    "smooth-scrolling-threshold": 1
+    "smooth-scrolling-threshold": 1,
   },
 
   "temperature": {
@@ -113,7 +113,7 @@
     "tooltip": true,
     "hwmon-path": [
       "/sys/class/hwmon/hwmon1/temp1_input",
-      "/sys/class/thermal/thermal_zone0/temp"
+      "/sys/class/thermal/thermal_zone0/temp",
     ],
     "warning-threshold": 50,
     "critical-threshold": 80,
@@ -121,7 +121,7 @@
     "format-critical": "[{icon}: {temperatureC}°C]",
     "format": "[{icon}: {temperatureC}°C]",
     "format-icons": ["TMP"],
-    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nvtop sh -c 'nvtop'"
+    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nvtop sh -c 'nvtop'",
   },
 
   "network": {
@@ -131,14 +131,14 @@
     "format-disconnected": "[NET: ✖]",
     "tooltip-format": "SSID: {essid}\nInterface: {ifname}\nAdresse: {ipaddr}\nSignal: {signalStrength}%",
     "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nmtui sh -c 'nmtui'",
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-connection-editor",
   },
 
   "battery": {
     "states": {
       "good": 100,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "interval": 5,
     "format": "[BAT: {capacity}%]",
@@ -157,7 +157,7 @@
     "warning": 80,
     "critical": 90,
     "format-warning": "[STR: {percentage_used}%]",
-    "format-critical": "[STR: {percentage_used}%]"
+    "format-critical": "[STR: {percentage_used}%]",
   },
 
   "custom/swaync": {
@@ -170,16 +170,15 @@
       "dnd-none": "NTF",
       "inhibited-notification": "NTF<span foreground='red'><sup>+</sup></span>",
       "inhibited-none": "NTF",
-      "dnd-inhibited-notification":
-        "NTFwq<span foreground='red'><sup>+</sup></span>",
-      "dnd-inhibited-none": "NTF"
+      "dnd-inhibited-notification": "NTFwq<span foreground='red'><sup>+</sup></span>",
+      "dnd-inhibited-none": "NTF",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
     "on-click": "sleep 0.1 && swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
-    "escape": true
+    "escape": true,
   },
 
   "wlr/taskbar": {
@@ -194,25 +193,25 @@
       "kitty",
       "jetbrains-studio",
       "Spotify",
-      "Zen Browser"
-    ]
+      "Zen Browser",
+    ],
   },
 
   "custom/cava": {
     "exec": "~/.dotfiles/config/hypr/scripts/waybar_cava.sh",
     "format": "{}",
-    "on-click": "kitty -c ~/.config/dotfiles/kitty/kitty.conf nvim -c cd ~/.config/dotfiles/"
+    "on-click": "kitty -c ~/.config/dotfiles/kitty/kitty.conf nvim -c cd ~/.config/dotfiles/",
   },
 
   "custom/lumi": {
     "exec": "~/.cargo/bin/lumi",
-    "format": "{}"
+    "format": "{}",
   },
 
- "custom/mpris": {
-  "exec": "playerctl metadata mpris:artUrl 2>/dev/null",
-  "format": "<img src='{}' width='28' height='28'/>",
-  "interval": 2,
-  "return-type": "json"
-}
+  "custom/mpris": {
+    "exec": "playerctl metadata mpris:artUrl 2>/dev/null",
+    "format": "<img src='{}' width='28' height='28'/>",
+    "interval": 2,
+    "return-type": "json",
+  },
 }
