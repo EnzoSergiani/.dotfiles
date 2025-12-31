@@ -18,3 +18,16 @@ chpwd() {
     deactivate 2>/dev/null
   fi
 }
+
+bindkey ' ' magic-space
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^ ' expand-or-complete
+bindkey '^W' backward-kill-word
+bindkey '^U' kill-whole-line
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
+bindkey '^I' expand-or-complete
