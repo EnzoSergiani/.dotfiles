@@ -82,6 +82,8 @@
   };
   services.blueman.enable = true;
 
+  services.gvfs.enable = true;
+
   system.stateVersion = "25.11";
 
   home-manager.useGlobalPkgs = true;

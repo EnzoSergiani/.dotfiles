@@ -67,6 +67,7 @@ in
     # === Theming & UI ===
     adwaita-icon-theme
     bibata-cursors
+    kdePackages.qtsvg
 
     # === Hyprland Ecosystem ===
     hypridle
