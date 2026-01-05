@@ -6,7 +6,7 @@ let
   zen-browser-pkg = builtins.fetchTarball {
     url = "https://github.com/0xc000022070/zen-browser-flake/archive/main.tar.gz";
   };
-  zen-browser = (pkgs.callPackage zen-browser-pkg {}).default;
+  zen-browser = (pkgs.callPackage zen-browser-pkg { }).default;
 
 in
 {
