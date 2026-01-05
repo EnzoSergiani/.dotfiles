@@ -25,7 +25,7 @@ wall_selection=$(
       nombre_sin_extension="${nombre_archivo%.*}"
       echo -en "$nombre_archivo\x00icon\x1f${CACHE_DIR}/$nombre_archivo\n"
     fi
-  done | sort | rofi -dmenu -theme ~/.dotfiles/config/rofi/wallpaper-theme.rasi -p "WALLPAPER"
+  done | sort | rofi -dmenu -theme ~/.dotfiles/config/rofi/themes/wallpaper-theme.rasi -p "WALLPAPER"
   shopt -u nullglob
 )
 
