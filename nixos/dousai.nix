@@ -111,9 +111,11 @@ in
 
   programs.git = {
     enable = true;
-    userName = "EnzoSergiani";
-    userEmail = "enzo.sergiani@protonmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "enzo.sergiani@protonmail.com";
+        name = "EnzoSergiani";
+      };
       credential.helper = "store";
     };
   };
