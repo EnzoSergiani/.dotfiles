@@ -9,8 +9,6 @@
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "persistent-workspaces": {
       "1": [],
-      "2": [],
-      "3": [],
     },
     "format-icons": {
       "active": "[*]",
@@ -20,7 +18,7 @@
 
   "clock": {
     "interval": 1,
-    "format": "[{:L%H:%M, %a %d %b %Y}]",
+    "format": "{:L%H:%M, %a %d %b %Y}",
     "locale": "fr_FR.utf8",
     "timezone": "Europe/Paris",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -45,8 +43,16 @@
     },
   },
 
+  "hyprland/window": {
+    "format": "",
+    "max-length": 0,
+    "separate-outputs": true,
+    "offscreen-css": true,
+    "offscreen-css-text": "",
+  },
+
   "cpu": {
-    "format": " [CPU: {usage}%] ",
+    "format": "CPU: {usage}%",
     "interval": 1,
     "on-click-right": "gnome-system-monitor",
     "states": {
@@ -55,21 +61,9 @@
     },
   },
 
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 60,
-    "separate-outputs": true,
-    "offscreen-css": true,
-    "offscreen-css-text": "",
-    "rewrite": {
-      "^(.+)$": "[$1]",
-      "^$": "",
-    },
-  },
-
   "memory": {
     "interval": 10,
-    "format": "[RAM: {percentage}%] ",
+    "format": "RAM: {percentage}%",
     "format-alt-click": "click",
     "tooltip": true,
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
@@ -80,10 +74,59 @@
     },
   },
 
+  "temperature": {
+    "interval": 10,
+    "tooltip": true,
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon1/temp1_input",
+      "/sys/class/thermal/thermal_zone0/temp",
+    ],
+    "warning-threshold": 50,
+    "critical-threshold": 80,
+    "format-warning": "{icon}: {temperatureC}°C",
+    "format-critical": "{icon}: {temperatureC}°C",
+    "format": "{icon}: {temperatureC}°C",
+    "format-icons": ["TMP"],
+    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nvtop sh -c 'nvtop'",
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "NET: {signalStrength}%",
+    "format-ethernet": "LAN: {ifname}",
+    "format-disconnected": "NET: ✖",
+    "tooltip-format": "SSID: {essid}\nInterface: {ifname}\nAdresse: {ipaddr}\nSignal: {signalStrength}%",
+    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nmtui sh -c 'nmtui'",
+    "on-click": "nm-connection-editor",
+  },
+
+  "pulseaudio": {
+    "format": "SND: {volume}%",
+    "format-bluetooth": "BLT: {volume}%",
+    "format-muted": "MTE",
+    "scroll-step": 5.0,
+    "on-click": "pavucontrol -t 3",
+    "tooltip-format": "{icon} {desc} | {volume}%",
+    "smooth-scrolling-threshold": 1,
+  },
+
+  "battery": {
+    "states": {
+      "good": 100,
+      "warning": 30,
+      "critical": 15,
+    },
+    "interval": 5,
+    "format": "BAT: {capacity}%",
+    "format-charging": "CHG: {capacity}%",
+    "format-plugged": "CHG: {capacity}%",
+    "format-full": "BAT: {capacity}%",
+    "tooltip-format": "Capacity: {capacity}%\nTime left: {time}",
+  },
   "mpris": {
     "interval": 1,
-    "format": "[{artist} — {title}]",
-    "format-paused": " ",
+    "format": "[▸ {artist} — {title}]",
+    "format-paused": "[⏸ {artist} — {title}]",
     "format-stopped": " ",
     "max-length": 30,
     "tooltip": true,
@@ -98,85 +141,23 @@
     },
   },
 
-  "pulseaudio": {
-    "format": "[SND: {volume}%]",
-    "format-bluetooth": "[BLT: {volume}%]",
-    "format-muted": "[MTE]",
-    "scroll-step": 5.0,
-    "on-click": "pavucontrol -t 3",
-    "tooltip-format": "{icon} {desc} | {volume}%",
-    "smooth-scrolling-threshold": 1,
-  },
-
-  "temperature": {
-    "interval": 10,
-    "tooltip": true,
-    "hwmon-path": [
-      "/sys/class/hwmon/hwmon1/temp1_input",
-      "/sys/class/thermal/thermal_zone0/temp",
-    ],
-    "warning-threshold": 50,
-    "critical-threshold": 80,
-    "format-warning": "[{icon}: {temperatureC}°C]",
-    "format-critical": "[{icon}: {temperatureC}°C]",
-    "format": "[{icon}: {temperatureC}°C]",
-    "format-icons": ["TMP"],
-    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nvtop sh -c 'nvtop'",
-  },
-
-  "network": {
-    "interval": 5,
-    "format-wifi": "[NET: {signalStrength}%]",
-    "format-ethernet": "[LAN: {ifname}]",
-    "format-disconnected": "[NET: ✖]",
-    "tooltip-format": "SSID: {essid}\nInterface: {ifname}\nAdresse: {ipaddr}\nSignal: {signalStrength}%",
-    "on-click-right": "kitty -c ~/.config/dotfiles/kitty/kitty.conf --title nmtui sh -c 'nmtui'",
-    "on-click": "nm-connection-editor",
-  },
-
-  "battery": {
-    "states": {
-      "good": 100,
-      "warning": 30,
-      "critical": 15,
-    },
-    "interval": 5,
-    "format": "[BAT: {capacity}%]",
-    "format-charging": "[CHG: {capacity}%]",
-    "format-plugged": "[CHG: {capacity}%]",
-    "format-full": "[BAT: {capacity}%]",
-    "tooltip-format": "Capacity: {capacity}%\nTime left: {time}",
-  },
-
-  "disk": {
-    "interval": 30,
-    "format": "[STG: {percentage_used}%]",
-    "tooltip": true,
-    "tooltip-format": "Partition: {path}\nUtilisé: {specific_used:0.2f} GB\nFree: {specific_free:0.2f} GB\nTotal: {specific_total:0.2f} GB",
-    "path": "/dev/sda2",
-    "warning": 80,
-    "critical": 90,
-    "format-warning": "[STR: {percentage_used}%]",
-    "format-critical": "[STR: {percentage_used}%]",
-  },
-
   "custom/swaync": {
     "tooltip": true,
-    "format": "[{icon}: {}]",
+    "format": "{icon}: {text}",
     "format-icons": {
-      "notification": "NTF<span foreground='red'><sup>+</sup></span>",
+      "notification": "NTF",
       "none": "NTF",
-      "dnd-notification": "NTF<span foreground='red'><sup>+</sup></span>",
-      "dnd-none": "NTF",
-      "inhibited-notification": "NTF<span foreground='red'><sup>+</sup></span>",
+      "dnd-notification": "DND",
+      "dnd-none": "DND",
+      "inhibited-notification": "NTF",
       "inhibited-none": "NTF",
-      "dnd-inhibited-notification": "NTFwq<span foreground='red'><sup>+</sup></span>",
-      "dnd-inhibited-none": "NTF",
+      "dnd-inhibited-notification": "DND",
+      "dnd-inhibited-none": "DND",
     },
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true,
   },
@@ -197,21 +178,16 @@
     ],
   },
 
-  "custom/cava": {
-    "exec": "~/.dotfiles/config/hypr/scripts/waybar_cava.sh",
-    "format": "{}",
-    "on-click": "kitty -c ~/.config/dotfiles/kitty/kitty.conf nvim -c cd ~/.config/dotfiles/",
+  "custom/openBracket": {
+    "format": "[",
+    "escape": true,
   },
-
-  "custom/lumi": {
-    "exec": "~/.cargo/bin/lumi",
-    "format": "{}",
+  "custom/closeBracket": {
+    "format": "]",
+    "escape": true,
   },
-
-  "custom/mpris": {
-    "exec": "playerctl metadata mpris:artUrl 2>/dev/null",
-    "format": "<img src='{}' width='28' height='28'/>",
-    "interval": 2,
-    "return-type": "json",
+  "custom/separator": {
+    "format": " | ",
+    "escape": true,
   },
 }

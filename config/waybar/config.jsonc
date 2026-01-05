@@ -13,18 +13,25 @@
   "margin-bottom": 0,
   "output": ["eDP-1"],
 
-  "modules-left": ["hyprland/workspaces", "clock", "custom/cava", "mpris"],
+  "modules-left": ["hyprland/workspaces", "mpris"],
 
-  "modules-center": ["hyprland/window"],
+  "modules-center": ["hyprland/window", "clock"],
 
   "modules-right": [
+    "custom/openBracket",
     "cpu",
-    "disk",
+    "custom/separator",
     "memory",
+    "custom/separator",
     "temperature",
+    "custom/separator",
     "network",
+    "custom/separator",
     "pulseaudio",
-    "custom/swaync",
+    "custom/separator",
     "battery",
+    "custom/separator",
+    "custom/swaync",
+    "custom/closeBracket",
   ],
 }
