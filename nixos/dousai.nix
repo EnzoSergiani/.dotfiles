@@ -37,55 +37,65 @@ in
   '';
 
   home.packages = with pkgs; [
-    # System
+    # === Terminal & CLI Tools ===
+    fastfetch
+    kitty
+    lsd
+    trash-cli
+    unzip
+
+    # === System Utilities ===
     baobab
-    bibata-cursors
     blueman
     brightnessctl
-    cava
-    cliphist
-    fastfetch
-    git
+    fprintd
     gnome-calculator
     gnome-disk-utility
     gnome-system-monitor
-    grim
-    imagemagick
-    kitty
-    lazygit
-    lsd
+    libfprint
     nautilus
     pavucontrol
-    networkmanagerapplet
-    playerctl
+    usbutils
+
+    # === Clipboard & Screenshots ===
+    cliphist
+    grim
     slurp
-    trash-cli
     wl-clipboard
     xdg-utils
 
-    # Productivity
-    discord
-    inkscape
-    obsidian
-    signal-desktop
-    texlive.combined.scheme-full
-    virtualbox
-    wireshark
+    # === Theming & UI ===
+    adwaita-icon-theme
+    bibata-cursors
 
-    # Multimedia
-    eog
-    libreoffice
-    vlc
-    zen-browser
-    zathura
-
-    # Hyprland
+    # === Hyprland Ecosystem ===
     hypridle
     hyprlock
     hyprpaper
     rofi
     swaynotificationcenter
     waybar
+
+    # === Multimedia ===
+    cava
+    cheese
+    eog
+    imagemagick
+    inkscape
+    playerctl
+    vlc
+    zathura
+
+    # === Productivity ===
+    libreoffice
+    obsidian
+    virtualbox
+    wireshark
+    zen-browser
+
+    # === Communication ===
+    discord
+    signal-desktop
   ];
 
   programs.zsh = {
