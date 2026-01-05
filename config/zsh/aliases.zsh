@@ -22,7 +22,6 @@ alias nix-remove="nix-env -e"
 alias nix-list="nix-env -q"
 alias nix-optimize="sudo nix-collect-garbage -d && sudo nix-store --optimise"
 
-alias -s sh=$EDITOR
 alias -s py=$EDITOR
 alias -s c=$EDITOR
 alias -s cpp=$EDITOR

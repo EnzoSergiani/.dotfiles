@@ -1,5 +1,5 @@
 chpwd() {
-  ls -lah
+  lsd -lahh
 
   # Virtual environment auto-activation
   local venv_names=("venv" "env" ".venv" ".env")
