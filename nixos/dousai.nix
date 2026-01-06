@@ -37,6 +37,32 @@ in
   '';
 
   home.packages = with pkgs; [
+    # === Development Tools ===
+    bibtex-tidy
+    black
+    cargo
+    clang-tools
+    cmake
+    gcc
+    git
+    lazygit
+    nixpkgs-fmt
+    nodePackages.prettier
+    nodejs
+    python3
+    rustc
+    rustfmt
+    shfmt
+    stylua
+    taplo
+    tree-sitter
+    (texlive.combine {
+      inherit (texlive)
+        scheme-medium
+        latexindent
+        latexmk;
+    })
+
     # === Terminal & CLI Tools ===
     fastfetch
     kitty

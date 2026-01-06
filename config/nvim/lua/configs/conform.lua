@@ -39,9 +39,37 @@ local options = {
   },
 
   formatters = {
+    stylua = {
+      command = "/etc/profiles/per-user/dousai/bin/stylua",
+    },
+    shfmt = {
+      command = "/etc/profiles/per-user/dousai/bin/shfmt",
+    },
+    black = {
+      command = "/etc/profiles/per-user/dousai/bin/black",
+    },
+    clang_format = {
+      command = "/etc/profiles/per-user/dousai/bin/clang-format",
+    },
+    rustfmt = {
+      command = "/etc/profiles/per-user/dousai/bin/rustfmt",
+    },
+    prettier = {
+      command = "/etc/profiles/per-user/dousai/bin/prettier",
+    },
+    taplo = {
+      command = "/etc/profiles/per-user/dousai/bin/taplo",
+    },
+    nixpkgs_fmt = {
+      command = "/etc/profiles/per-user/dousai/bin/nixpkgs-fmt",
+    },
     latexindent = {
-      command = "latexindent",
+      command = "/etc/profiles/per-user/dousai/bin/latexindent",
       args = { "-c=build", "-g=build/indent.log", "-" },
+    },
+    ["bibtex-tidy"] = {
+      command = "/etc/profiles/per-user/dousai/bin/bibtex-tidy",
+      args = { "--modify" },
     },
   },
 
@@ -50,4 +78,5 @@ local options = {
     lsp_fallback = true,
   },
 }
+
 return options
