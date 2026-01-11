@@ -85,6 +85,11 @@
 
   services.gvfs.enable = true;
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "ignore";
+  };
+
   system.stateVersion = "25.11";
 
   home-manager.useGlobalPkgs = true;
