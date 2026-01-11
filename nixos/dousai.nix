@@ -52,13 +52,14 @@ in
     python3
     rustc
     rustfmt
+    rust-analyzer
     shfmt
     stylua
     taplo
     tree-sitter
     (texlive.combine {
       inherit (texlive)
-        scheme-medium
+        scheme-full
         latexindent
         latexmk;
     })
@@ -106,6 +107,7 @@ in
     # === Multimedia ===
     cava
     cheese
+    darktable
     eog
     imagemagick
     inkscape
