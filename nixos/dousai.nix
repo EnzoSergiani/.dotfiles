@@ -46,6 +46,7 @@ in
     gcc
     git
     lazygit
+    ltex-ls
     nixpkgs-fmt
     nodePackages.prettier
     nodejs
