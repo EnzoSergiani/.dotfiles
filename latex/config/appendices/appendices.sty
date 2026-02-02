@@ -1,0 +1,27 @@
+\usepackage[toc,page]{appendix}
+\usepackage{tocloft}
+
+\newlistof{appendices}{app}{Liste des annexes}
+
+% Create a new appendix
+\newcommand{\createappendice}[2]{
+	\newpage
+	\chapter{#1}\label{annexe:#2}
+	\addcontentsline{app}{appendices}{Annexe~\thechapter~:~#1}%
+}
+
+% Rename "Appendix" to "Annexe"
+\AtBeginDocument{%
+	\renewcommand{\appendixautorefname}{annexe}
+}
+
+% Insert appendices
+\newcommand{\insertappendices}{
+	\newpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Liste des annexes}
+	\vspace*{0.40cm}
+	\listofappendices
+	\newpage
+	\appendix
+}

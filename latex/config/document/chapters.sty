@@ -1,0 +1,44 @@
+\usepackage{titlesec}
+
+% Style for numbered chapters
+\titleformat{\chapter}[display]
+{
+	\vspace{-3cm}
+	\normalfont\bfseries
+}
+{
+	\fontsize{45}{70}\selectfont\textcolor{primary-color}{\thechapter}
+}
+{20pt}
+{
+	\LARGE
+}
+
+% Style for unnumbered chapters
+\titleformat{name=\chapter,numberless}[display]
+{
+	\vspace{-3cm}
+	\normalfont\bfseries
+}
+{}
+{52pt}
+{
+	\Huge
+}
+
+% Custom chapter page without number
+\newcommand{\customchapterpagewithnum}[2][]{%
+	\clearpage
+	\thispagestyle{empty}%
+	\vspace*{3.25cm}%
+	\noindent
+	\ifx&#1&%
+	\else
+	{\fontsize{45}{70}\selectfont\textcolor{primary-color}{#1}}%
+	\vspace{20pt}%
+	\par
+	\fi
+	{\normalfont\bfseries\LARGE #2}%
+	\vspace{43.5pt}%
+	\par
+}

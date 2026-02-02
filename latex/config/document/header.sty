@@ -1,0 +1,51 @@
+\usepackage{fancyhdr}
+
+% Define chapter mark to show chapter title only
+\renewcommand{\chaptermark}[1]{%
+	\markboth{#1}{}
+}
+
+% Header content
+\newcommand{\smartchapterheader}{%
+	\ifnum\value{chapter}>0
+		\thechapter~\cadratin\ %
+	\fi
+	\leftmark
+}
+
+% Fancy header style
+\fancypagestyle{fancy}{
+	\fancyhf{}
+	\fancyhead[LE]{\thepage}
+	\fancyhead[RO]{\thepage}
+	\fancyhead[LO]{\smartchapterheader}
+	\fancyhead[RE]{\smartchapterheader}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+% Roman page style
+\fancypagestyle{roman}{
+	\fancyhf{}
+	\fancyhead[LE]{\thepage}
+	\fancyhead[RO]{\thepage}
+	\fancyhead[LO]{\smartchapterheader}
+	\fancyhead[RE]{\smartchapterheader}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+% Arabic page style
+\fancypagestyle{arabic}{
+	\fancyhf{}
+	\fancyhead[LE]{\thepage}
+	\fancyhead[RO]{\thepage}
+	\fancyhead[LO]{\smartchapterheader}
+	\fancyhead[RE]{\smartchapterheader}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+% No header style
+\fancypagestyle{noheader}{
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}

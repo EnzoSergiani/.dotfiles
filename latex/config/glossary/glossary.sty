@@ -1,0 +1,18 @@
+\usepackage{hyperref}
+\usepackage[acronym,nonumberlist,toc,style=super,nopostdot]{glossaries}
+\usepackage{tabularx}
+\usepackage{longtable}
+
+\renewenvironment{theglossary}
+{\begingroup
+	\spaceskip=1.0\fontdimen2\font plus 1pt minus 1pt
+	\renewcommand{\arraystretch}{1.3}
+	\let\oldtabularnewline\\
+	\renewcommand{\\}{\oldtabularnewline[0pt]}
+	\begin{longtable}{@{}>{\raggedright\arraybackslash\bfseries}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.70\textwidth}@{}}}
+		{\end{longtable}\endgroup}
+
+\makeglossaries%
+
+\input{glossary/acronyms.tex}
+\input{glossary/glossary.tex}

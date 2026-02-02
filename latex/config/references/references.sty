@@ -1,0 +1,17 @@
+\usepackage[style=ieee]{biblatex}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+\hypersetup{hidelinks}
+\addbibresource{references/references.bib}
+
+\ExecuteBibliographyOptions{sorting=none}
+
+% Insert bibliography
+\newcommand{\insertreferences}{
+	\newpage
+	\chapter*{Références}
+	\addcontentsline{toc}{chapter}{Références}
+	\printbibliography[title=,heading=none]
+	\cleardoublepage
+}

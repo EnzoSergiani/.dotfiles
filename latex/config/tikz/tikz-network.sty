@@ -1,0 +1,55 @@
+% % TikZ library for network diagrams
+%
+% \tikzset{%
+% 	equipement/.style={inner sep=0pt, outer sep=5pt},
+% 	interface/.style={draw, rectangle, rounded corners, font=\small\sffamily,
+% 			minimum width=1.2cm, minimum height=0.5cm},
+% 	ethernet/.style={interface, fill=yellow!50},
+% 	serial/.style={interface, fill=green!70},
+% 	fiber/.style={interface, fill=blue!30},
+% 	connexion/.style={thick, draw=gray!70},
+% 	connexion_principale/.style={very thick, draw=blue},
+% 	vitesse/.style={sloped, anchor=south, font=\small\sffamily, fill=white, inner sep=2pt}
+% }
+%
+% \newcommand*{\equipementreseau}[3]{%
+% 	\begin{tikzpicture}
+% 		\node[equipement] (img) {\includegraphics[width=#1]{#2}};
+% 		\node[below=0.1cm of img, font=\sffamily\bfseries] {#3};
+% 	\end{tikzpicture}%
+% }
+%
+% \newcommand{\placerEquipement}[7]{%
+% 	\ifnum\pdfstrcmp{#2}{N}=0
+% 		\node[equipement, above=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 	\else\ifnum\pdfstrcmp{#2}{S}=0
+% 			\node[equipement, below=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 		\else\ifnum\pdfstrcmp{#2}{E}=0
+% 				\node[equipement, right=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 			\else\ifnum\pdfstrcmp{#2}{W}=0
+% 					\node[equipement, left=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 				\else\ifnum\pdfstrcmp{#2}{NE}=0
+% 						\node[equipement, above right=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 					\else\ifnum\pdfstrcmp{#2}{NW}=0
+% 							\node[equipement, above left=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 						\else\ifnum\pdfstrcmp{#2}{SE}=0
+% 								\node[equipement, below right=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 							\else\ifnum\pdfstrcmp{#2}{SW}=0
+% 									\node[equipement, below left=#3 of #4] (#1) {\equipementreseau{#5}{#6}{#7}};
+% 								\fi\fi\fi\fi\fi\fi\fi\fi
+% }
+%
+% \newcommand{\connecter}[3]{%
+% 	\draw[connexion] (#1) -- node[vitesse, midway]{#3} (#2);
+% }
+%
+% \newcommand{\connecterPrincipal}[3]{%
+% 	\draw[connexion_principale] (#1) -- node[vitesse, midway]{#3} (#2};
+% }
+%
+% \newcommand{\connecterAvecInterfaces}[6]{%
+% 	\draw[connexion] (#1)
+% 	-- node[#6, at start, xshift=-3mm, yshift=-3mm]{#3}
+% 	node[#6, at end, xshift=3mm, yshift=3mm]{#4} (#2)
+% 	node[vitesse, midway]{#5};
+% }

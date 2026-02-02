@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper]{report}
+% \documentclass[12pt,a4paper, twoside, openright]{report}
+
+% --- MODULES --------------------
+\def\usedocumentstructure{}
+\def\useglossary{}
+\def\usefigurestables{}
+\def\useequations{}
+\def\usereferences{}
+\def\useappendices{}
+% \def\usetodos{}
+% \def\usetikz{}
+% \def\usecode{}
+% \def\usedevtools{}
+% \def\useboxes{}
+% --------------------------------
+
+\input{config/preamble.tex}
+\input{config/modules.tex}
+\input{custom/commands.tex}
+
+% --- METADATA -------------------
+\setauthor{Prénom Nom}
+\setdate{\today}
+\settitle{Un super titre}
+\settype{Le type de document}
+\setkeywords{mot-clé1, mot-clé2, mot-clé3}
+% --------------------------------
+
+\begin{document}
+
+\insertparameters
+
+\ifdefined\usetodos
+	\inserttableoftodos
+\fi
+
+\ifdefined\usedocumentstructure
+	\insertfrontpage
+	\setupromanpages
+\fi
+
+% --- FRONT PAGES ----------------
+
+\input{page/01_abstract.tex}
+\input{page/02_acknowledgements.tex}
+\input{page/03_foreword.tex}
+
+% --------------------------------
+
+\ifdefined\useglossary
+	\insertglossaries
+	\insertacronyms
+\fi
+
+\ifdefined\usedocumentstructure
+	\inserttableofcontents
+	\setuparabicpages
+\fi
+
+% --- PAGES ----------------------
+
+\input{page/11_introduction.tex}
+\input{page/12_framework.tex}
+\input{page/13_context.tex}
+\input{page/14_methodology.tex}
+\input{page/15_presentation.tex}
+\input{page/16_discussion.tex}
+\input{page/17_conclusion.tex}
+
+% --------------------------------
+
+\ifdefined\usereferences
+	\insertreferences
+\fi
+
+\ifdefined\useappendices
+	\insertappendices
+\fi
+
+\ifdefined\usefigurestables
+	\insertlistfiguretables
+\fi
+
+\ifdefined\useequations
+	\insertequationlist
+\fi
+
+% --- BACK PAGES -----------------
+
+\input{page/91_backpage.tex}
+
+% --------------------------------
+
+\end{document}

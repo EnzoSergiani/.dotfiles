@@ -1,0 +1,23 @@
+\makeatletter
+\if@twoside
+	\usepackage[
+		a4paper,
+		inner=3cm,
+		outer=2cm,
+		top=2.5cm,
+		bottom=2.5cm,
+		bindingoffset=0.5cm,
+		headsep=0.75cm,
+	]{geometry}
+	\setlength{\marginparwidth}{1.8cm}
+\else
+	\usepackage[
+		a4paper,
+		margin=2.5cm,
+		headsep=0.75cm,
+	]{geometry}
+	\setlength{\marginparwidth}{2.5cm}
+\fi
+\makeatother
+
+\setlength{\headheight}{15pt}

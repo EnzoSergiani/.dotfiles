@@ -1,0 +1,25 @@
+\usepackage{tocloft}
+
+% Insert list of equations
+\newlistof{listequations}{equ}{Liste des équations}
+\newcommand{\insertequationlist}{
+	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Liste des équations}
+	\vspace*{0.40cm}
+	\listoflistequations
+}
+
+% Customize the appearance of the list of equations
+\renewcommand{\cftlistequationspresnum}{\hspace{1.5em}}
+\renewcommand{\cftlistequationsnumwidth}{3.8em}
+\renewcommand{\cftlistequationsdotsep}{4.5}
+\renewcommand{\cftlistequationsfont}{\normalfont}
+
+% Command to add an equation to the list
+\newcommand{\newequation}[2][]{%
+	\begin{equation}
+		#2
+	\end{equation}
+	\addcontentsline{equ}{listequations}{\protect\numberline{\theequation}#1}
+}

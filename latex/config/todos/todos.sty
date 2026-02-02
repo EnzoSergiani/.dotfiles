@@ -1,0 +1,20 @@
+\usepackage{xargs}
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny,textwidth=2cm,french]{todonotes}
+
+% Todo commands
+\newcommandx{\todoblock}[2][1=]{\todo[inline,linecolor=gray,backgroundcolor=gray!25,bordercolor=gray,#1]{#2}}
+\newcommandx{\todoerror}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\todowarning}[2][1=]{\todo[linecolor=orange,backgroundcolor=orange!25,bordercolor=orange,#1]{#2}}
+\newcommandx{\tododone}[2][1=]{\todo[linecolor=green,backgroundcolor=green!25,bordercolor=green,#1]{#2}}
+\newcommandx{\todoquestion}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+
+% Insert table of todos
+\newcommand{\inserttableoftodos}{
+	\phantomsection
+	\newgeometry{margin=2.5cm}
+	\listoftodos
+	\thispagestyle{empty}
+	\setcounter{page}{\value{page}-1}
+	\cleardoublepage
+}

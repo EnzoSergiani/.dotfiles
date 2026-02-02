@@ -1,0 +1,14 @@
+% Insert list of figures and tables
+\newcommand{\insertlistfiguretables}{
+	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Table des figures}
+	\vspace*{0.40cm}
+	\listoffigures
+	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Liste des tableaux}
+	\vspace*{0.40cm}
+	\listoftables
+	\cleardoublepage
+}

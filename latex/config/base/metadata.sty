@@ -1,0 +1,51 @@
+\usepackage{hyperref}
+
+\makeatletter
+% Author
+\newcommand{\setauthor}[1]{\def\author{#1}}
+\newcommand{\getauthor}{\@ifundefined{author}{}{\author}}
+
+% Date
+\newcommand{\setdate}[1]{\def\date{#1}}
+\newcommand{\getdate}{\@ifundefined{date}{}{\date}}
+
+% Title
+\newcommand{\settitle}[1]{\def\title{#1}}
+\newcommand{\gettitle}{\@ifundefined{title}{}{\title}}
+
+% Type
+\newcommand{\settype}[1]{\def\type{#1}}
+\newcommand{\gettype}{\@ifundefined{type}{}{\type}}
+
+% Professor
+\newcommand{\setprofessor}[1]{\def\professor{#1}}
+\newcommand{\getprofessor}{\@ifundefined{professor}{}{\professor}}
+
+% Domain
+\newcommand{\setdomain}[1]{\def\domain{#1}}
+\newcommand{\getdomain}{\@ifundefined{domain}{}{\domain}}
+
+% Course
+\newcommand{\setcourse}[1]{\def\course{#1}}
+\newcommand{\getcourse}{\@ifundefined{course}{}{\course}}
+
+% Goal
+\newcommand{\setgoal}[1]{\def\goal{#1}}
+\newcommand{\getgoal}{\@ifundefined{goal}{}{\goal}}
+
+% Supervisor
+\newcommand{\setSupervisor}[1]{\def\supervisor{#1}}
+\newcommand{\getSupervisor}{\@ifundefined{supervisor}{}{\supervisor}}
+
+% Speciality
+\newcommand{\setspeciality}[1]{\def\speciality{#1}}
+\newcommand{\getspeciality}{\@ifundefined{speciality}{}{\speciality}}
+
+% School
+\newcommand{\setschool}[1]{\def\school{#1}}
+\newcommand{\getschool}{\@ifundefined{school}{}{\school}}
+
+% Keywords
+\newcommand{\setkeywords}[1]{\def\keywords{#1}}
+\newcommand{\getkeywords}{\@ifundefined{keywords}{}{\keywords}}
+\makeatother

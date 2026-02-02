@@ -1,0 +1,25 @@
+% Set a blank page
+\newcommand\blankpage{
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\clearpage
+}
+
+% Roman page numbering
+\newcommand{\setupromanpages}{
+	\renewcommand{\thechapter}{\Roman{chapter}}
+	\clearpage
+	\pagenumbering{roman}
+	\pagestyle{roman}
+}
+
+% Arabic page numbering
+\newcommand{\setuparabicpages}{
+	\renewcommand{\thechapter}{\arabic{chapter}}
+	\renewcommand{\theHchapter}{\number\numexpr\value{chapter}+5\relax}
+	\clearpage
+	\pagenumbering{arabic}
+	\setcounter{chapter}{0}
+	\pagestyle{arabic}
+}

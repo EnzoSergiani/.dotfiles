@@ -1,0 +1,21 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\usepackage{tocloft}
+\usepackage{pdfpages}
+\usepackage{silence}
+\usepackage{csquotes}
+\usepackage{emptypage}
+
+% French quotes configuration
+\MakeOuterQuote{"}
+
+% Latex warnings to ignore
+\WarningFilter{tracklang}{No `datatool' support for dialect}
+\WarningFilter{fancyhdr}{\fancyhead's `E' option without twoside}
+\WarningFilter{biblatex}{ csquotes should be loaded after fvextra, to avoid a warning from the lineno package}
+\WarningFilter{biblatex}{Macro 'volume+number' undefined}
+\WarningFilter{latex}{Command}
+\WarningFilter{fvextra}{csquotes should be loaded after fvextra}

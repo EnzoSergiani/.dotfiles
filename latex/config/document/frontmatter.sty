@@ -1,0 +1,46 @@
+% Insert front page
+\newcommand{\insertfrontpage}{
+	\newgeometry{margin=2.5cm}
+	\cleardoublepage
+	\thispagestyle{empty}
+	\pagenumbering{gobble}
+
+	\vspace*{3cm}
+
+	\begin{center}
+		\large \gettype
+	\end{center}
+
+	\vspace{0.5cm}
+
+	\begin{center}
+		\hrule
+		\LARGE \textbf{\gettitle} \\[0.6cm]
+		\hrule\vspace{5mm}
+	\end{center}
+
+	\vspace{2cm}
+
+	\begin{center}
+		\large \getauthor
+	\end{center}
+
+	\vfill
+
+	\begin{center}
+		\large \getdate
+	\end{center}
+
+	\restoregeometry
+	\cleardoublepage
+}
+
+% Insert table of contents
+\newcommand{\inserttableofcontents}{
+	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Table des matières}
+	\vspace*{0.40cm}
+	\tableofcontents
+	\cleardoublepage
+}

@@ -1,0 +1,78 @@
+% -- CORE MODULES-----------------
+\input{config/base/metadata.sty}
+\input{config/base/parameters.sty}
+\input{config/base/margins.sty}
+\input{config/base/fonts.sty}
+\input{config/base/color.sty}
+\input{config/base/mathematics.sty}
+\input{config/base/elements.sty}
+% --------------------------------
+
+% --- OPTIONAL MODULES -----------
+% Document structure module
+\ifdefined\usedocumentstructure
+	\input{config/document/chapters.sty}
+	\input{config/document/pages.sty}
+	\input{config/document/frontmatter.sty}
+	\input{config/document/header.sty}
+\fi
+
+% Figures and tables module
+\ifdefined\usefigurestables
+	\input{config/content/figures.sty}
+	\input{config/content/tables.sty}
+	\input{config/document/figurestables.sty}
+\fi
+
+% Equations module
+\ifdefined\useequations
+	\input{config/content/equations.sty}
+\fi
+
+% Module glossary and acronyms
+\ifdefined\useglossary
+	\input{config/glossary/glossary-commands.sty}
+	\input{config/glossary/glossary.sty}
+\fi
+
+% Bibliography and references module
+\ifdefined\usereferences
+	\input{config/references/references.sty}
+\fi
+
+% TikZ module
+\ifdefined\usetikz
+	\input{config/tikz/tikz-base.sty}
+	\input{config/tikz/tikz-network.sty}
+	\input{config/tikz/tikz-quantikz.sty}
+\fi
+
+% Code listing module
+\ifdefined\usecode
+	\input{config/code/code.sty}
+\fi
+
+% Development tools module
+\ifdefined\usedevtools
+	\input{config/dev/utilities.sty}
+\fi
+
+% Todos module
+\ifdefined\usetodos
+	\input{config/todos/todos.sty}
+	\message{Todos enabled}
+\else
+	\input{config/todos/todos-disabled.sty}
+	\message{Todos disabled}
+\fi
+
+% Appendices module
+\ifdefined\useappendices
+	\input{config/appendices/appendices.sty}
+\fi
+
+% Boxes module
+\ifdefined\useboxes
+	\input{config/content/boxes.sty}
+\fi
+% --------------------------------
