@@ -1,19 +1,19 @@
 % Insert glossaries
 \newcommand{\insertglossaries}{
-    \chapter{Glossaire}
-    \label{page:glossaire}
-    \renewcommand{\glossarysection}[2][]{}
-    \printglossary[title=]
-    \clearpage
+	\chapter{Glossaire}
+	\label{page:glossaire}
+	\renewcommand{\glossarysection}[2][]{}
+	\printglossary[title=]
+	\clearpage
 }
 
 % Insert acronyms
 \newcommand{\insertacronyms}{
-    \chapter{Acronymes}
-    \label{page:acronymes}
-    \renewcommand{\glossarysection}[2][]{}
-    \printglossary[type=\acronymtype, title=]
-    \clearpage
+	\chapter{Acronymes}
+	\label{page:acronymes}
+	\renewcommand{\glossarysection}[2][]{}
+	\printglossary[type=\acronymtype, title=]
+	\clearpage
 }
 
 % #1 : key
@@ -22,13 +22,13 @@
 % #4 : name avec majuscules
 % #5 : description
 \newcommand{\newglossaryentrywithacronym}[5]{%
-    \newglossaryentry{#1_gls}{%
-        name={#4},
-        description={#5}
-    }%
-    \newacronym[
-        first={#3 (\glslink{#1_gls}{#2})\glsadd{#1_gls}},
-        text={\glslink{#1_gls}{#2}},
-        description={\glslink{#1_gls}{#4}}
-    ]{#1}{#2}{#3}%
+	\newglossaryentry{#1_gls}{%
+		name={#4},
+		description={#5}
+	}%
+	\newacronym[
+		first={#3 (\glslink{#1_gls}{#2})\glsadd{#1_gls}},
+		text={\glslink{#1_gls}{#2}},
+		description={\glslink{#1_gls}{#4}}
+	]{#1}{#2}{#3}%
 }

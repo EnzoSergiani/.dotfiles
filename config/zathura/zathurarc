@@ -1,14 +1,77 @@
+set default-bg "#1e1e1e"
+set default-fg "#ebdbb2"
+
+set statusbar-bg "#282828"
+set statusbar-fg "#ebdbb2"
+
+set inputbar-bg "#282828"
+set inputbar-fg "#ebdbb2"
+
+set notification-bg "#282828"
+set notification-fg "#ebdbb2"
+set notification-error-bg "#cc241d"
+set notification-error-fg "#ebdbb2"
+set notification-warning-bg "#fabd2f"
+set notification-warning-fg "#1e1e1e"
+
+set completion-bg "#282828"
+set completion-fg "#ebdbb2"
+set completion-group-bg "#3c3836"
+set completion-group-fg "#d79921"
+set completion-highlight-bg "#504945"
+set completion-highlight-fg "#ebdbb2"
+
+set index-bg "#1e1e1e"
+set index-fg "#ebdbb2"
+set index-active-bg "#504945"
+set index-active-fg "#fbf1c7"
+
 set recolor false
-set recolor-lightcolor "#282828"
+set recolor-lightcolor "#1e1e1e"
 set recolor-darkcolor "#ebdbb2"
+set recolor-keephue true
+set recolor-reverse-video true
+
+set zoom 100
+set adjust-open "best-fit"
 set zoom-step 10
-set adjust-open best-fit
-set selection-clipboard clipboard
-set statusbar-h-padding 0
-set statusbar-v-padding 0
+set zoom-min 10
+set zoom-max 1000
+
+set scroll-step 40
+set scroll-hstep 40
+set scroll-full-overlap 0.2
+set scroll-wrap false
+set scroll-page-aware true
+
+set page-padding 1
+set pages-per-row 1
+set advance-pages-per-row false
+
+set statusbar-basename false
+set statusbar-home-tilde true
+set statusbar-h-padding 10
+set statusbar-v-padding 5
+set statusbar-visibility true
+
 set window-title-basename true
+set window-title-home-tilde true
 set window-title-page true
-set synctex true
+set guioptions ""
+
+set search-hadjust true
+set incremental-search true
+
+set render-loading-bg "#1e1e1e"
+set render-loading-fg "#ebdbb2"
+set render-loading true
+set page-cache-size 15
+set n-completion-items 15
+set font "JetBrainsMono NF 10"
+
+set selection-clipboard clipboard
+set selection-notification true
+
 set synctex-editor-command "nvim --remote-silent +%{line} %{input}"
 
 map <C-i> zoom in
@@ -17,15 +80,20 @@ map r reload
 map R rotate
 map i recolor
 map p print
-map w adjust_window width
-map h adjust_window best-fit
-map H zoom fit-height
-map <Tab> toggle_index
-map = zoom default
-map <C-=> zoom in
-map <C--> zoom out
-map <C-f> focus_inputbar :
-map <Up> scroll-hstep 20
-map <Down> scroll-hstep -20
+map <Up> scroll up
+map <Down> scroll down
 map <Left> navigate previous
 map <Right> navigate next
+map <C-=> zoom in
+map <C--> zoom out
+map = zoom default
+map H zoom fit-height
+map <Tab> toggle_index
+map f toggle_fullscreen
+map w adjust_window width
+map h adjust_window best-fit
+map / search forward
+map ? search backward
+map n search next
+map N search previous
+map <C-f> focus_inputbar /
