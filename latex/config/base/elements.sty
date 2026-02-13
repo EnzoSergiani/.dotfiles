@@ -1,12 +1,12 @@
 \usepackage{eurosym}
 
-% Euro symbol
 \AtBeginDocument{%
+	% Euro symbol
 	\renewcommand{\euro}{\geneuronarrow\ }
+
+	% Cadratin
+	\newcommand{\cadratin}{\unskip\enskip\textemdash\enskip}
+
+	% Half-cadratin
+	\newcommand{\halfcadratin}{\unskip\enskip\textendash\enskip}
 }
-
-% Dash with a space after
-\newcommand{\cadratin}{\textendash\ }
-
-% Default space between list items
-\newcommand{\listvspace}{\vspace{0.2cm}}

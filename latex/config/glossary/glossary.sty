@@ -1,7 +1,8 @@
-\usepackage{hyperref}
-\usepackage[acronym,nonumberlist,toc,style=super,nopostdot]{glossaries}
-\usepackage{tabularx}
+% config/glossary/glossary.sty
 \usepackage{longtable}
+\usepackage{tabularx}
+\usepackage[acronym,nonumberlist,toc,style=super,nopostdot]{glossaries}
+\usepackage{hyperref}
 
 \renewenvironment{theglossary}
 {\begingroup
@@ -13,6 +14,3 @@
 		{\end{longtable}\endgroup}
 
 \makeglossaries%
-
-\input{glossary/acronyms.tex}
-\input{glossary/glossary.tex}

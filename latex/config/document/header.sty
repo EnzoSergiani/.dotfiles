@@ -1,25 +1,19 @@
 \usepackage{fancyhdr}
 
-% Define chapter mark to show chapter title only
-\renewcommand{\chaptermark}[1]{%
-	\markboth{#1}{}
-}
+% Flag to indicate if the current chapter is unnumbered
+\newif\ifunnumberedchapter
+\unnumberedchapterfalse
 
-% Header content
-\newcommand{\smartchapterheader}{%
-	\ifnum\value{chapter}>0
-		\thechapter~\cadratin\ %
-	\fi
-	\leftmark
-}
+% Set header height
+\setlength{\headheight}{20pt}
 
 % Fancy header style
 \fancypagestyle{fancy}{
 	\fancyhf{}
 	\fancyhead[LE]{\thepage}
 	\fancyhead[RO]{\thepage}
-	\fancyhead[LO]{\smartchapterheader}
-	\fancyhead[RE]{\smartchapterheader}
+	\fancyhead[LO]{\leftmark}
+	\fancyhead[RE]{\leftmark}
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 
@@ -28,8 +22,8 @@
 	\fancyhf{}
 	\fancyhead[LE]{\thepage}
 	\fancyhead[RO]{\thepage}
-	\fancyhead[LO]{\smartchapterheader}
-	\fancyhead[RE]{\smartchapterheader}
+	\fancyhead[LO]{\leftmark}
+	\fancyhead[RE]{\leftmark}
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 
@@ -38,8 +32,8 @@
 	\fancyhf{}
 	\fancyhead[LE]{\thepage}
 	\fancyhead[RO]{\thepage}
-	\fancyhead[LO]{\smartchapterheader}
-	\fancyhead[RE]{\smartchapterheader}
+	\fancyhead[LO]{\leftmark}
+	\fancyhead[RE]{\leftmark}
 	\renewcommand{\headrulewidth}{0.4pt}
 }
 

@@ -1,6 +1,8 @@
 \usepackage{titlesec}
+\usepackage{textcase}
+\usepackage{etoolbox}
 
-% Style for numbered chapters
+% Redefine chapter title format
 \titleformat{\chapter}[display]
 {
 	\vspace{-3cm}
@@ -14,7 +16,6 @@
 	\LARGE
 }
 
-% Style for unnumbered chapters
 \titleformat{name=\chapter,numberless}[display]
 {
 	\vspace{-3cm}
@@ -26,19 +27,58 @@
 	\Huge
 }
 
-% Custom chapter page without number
+% Flag to indicate if the current chapter is unnumbered
+\newif\ifunnumberedchapter
+\unnumberedchapterfalse
+
+\makeatletter
+\let\old@chapter\@chapter
+\let\old@schapter\@schapter
+
+\def\@chapter[#1]#2{%
+	\unnumberedchapterfalse%
+	\old@chapter[{#1}]{#2}%
+	\edef\@tempchapnum{\thechapter}%
+	\markboth{\@tempchapnum \halfcadratin #1}{}%
+}
+
+\def\@schapter#1{%
+	\unnumberedchaptertrue%
+	\old@schapter{#1}%
+	\markboth{#1}{}%
+}
+\makeatother
+
+% Redefine chapter mark to show chapter number and title
+\renewcommand{\chaptermark}[1]{%
+	\typeout{DEBUG chaptermark arg = #1}%
+	\markboth{\arabic{chapter}\halfcadratin \NoCaseChange{#1}}{}%
+}
+
+\renewcommand{\MakeUppercase}[1]{#1}
+
+% Redefine chapter name and contents name after the preamble
+\AfterEndPreamble{%
+	\renewcommand{\chaptername}{}%
+	\renewcommand{\chaptertitlename}{}%
+	\renewcommand{\contentsname}{Table des matières}%
+}
+
+% Custom chapter page with optional number
 \newcommand{\customchapterpagewithnum}[2][]{%
 	\clearpage
 	\thispagestyle{empty}%
 	\vspace*{3.25cm}%
 	\noindent
 	\ifx&#1&%
+	\unnumberedchaptertrue
+	\markboth{\NoCaseChange{#2}}{}%
 	\else
+	\unnumberedchapterfalse
 	{\fontsize{45}{70}\selectfont\textcolor{primary-color}{#1}}%
-	\vspace{20pt}%
-	\par
+	\vspace{20pt}\par
+	\markboth{#1\halfcadratin\NoCaseChange{#2}}{}%
 	\fi
 	{\normalfont\bfseries\LARGE #2}%
-	\vspace{43.5pt}%
-	\par
+	\vspace{43.5pt}\par
 }

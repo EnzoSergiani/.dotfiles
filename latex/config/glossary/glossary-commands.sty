@@ -1,7 +1,8 @@
 % Insert glossaries
 \newcommand{\insertglossaries}{
-	\chapter{Glossaire}
+	\chapter*{Glossaire}
 	\label{page:glossaire}
+	\addcontentsline{toc}{chapter}{Glossaire}
 	\renewcommand{\glossarysection}[2][]{}
 	\printglossary[title=]
 	\clearpage
@@ -9,8 +10,9 @@
 
 % Insert acronyms
 \newcommand{\insertacronyms}{
-	\chapter{Acronymes}
+	\chapter*{Acronymes}
 	\label{page:acronymes}
+	\addcontentsline{toc}{chapter}{Acronymes}
 	\renewcommand{\glossarysection}[2][]{}
 	\printglossary[type=\acronymtype, title=]
 	\clearpage
