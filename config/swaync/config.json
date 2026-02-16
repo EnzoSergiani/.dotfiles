@@ -3,9 +3,9 @@
   "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
-  "control-center-margin-top": 20,
+  "control-center-margin-top": 10,
   "control-center-margin-bottom": 20,
-  "control-center-margin-right": 20,
+  "control-center-margin-right": 10,
   "control-center-margin-left": 20,
   "notification-icon-size": 64,
   "notification-body-image-height": 100,
@@ -15,7 +15,7 @@
   "timeout-critical": 0,
   "fit-to-screen": false,
   "control-center-width": 500,
-  "control-center-height": 900,
+  "control-center-height": 700,
   "notification-window-width": 490,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
@@ -26,16 +26,16 @@
   "widgets": ["title", "notifications", "mpris"],
   "widget-config": {
     "title": {
-      "text": "[Notification Center]",
+      "text": "Notification Center",
       "clear-all-button": true,
-      "button-text": "[Clear All]"
+      "button-text": "Clear All"
     },
     "dnd": {
       "text": "Leave me alone!!"
     },
     "label": {
       "max-lines": 1,
-      "text": "[Notification Center]"
+      "text": "Notification Center"
     },
     "mpris": {
       "image-size": 96,
