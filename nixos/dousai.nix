@@ -76,6 +76,7 @@ in
     baobab
     blueman
     brightnessctl
+    btop
     fprintd
     gnome-calculator
     gnome-disk-utility
