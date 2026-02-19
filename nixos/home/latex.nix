@@ -9,6 +9,7 @@
         latexmk;
     })
     bibtex-tidy
+    ltex-ls
     zathura
   ];
 }

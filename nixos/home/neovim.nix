@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     clang-tools
-    ltex-ls
     lua-language-server
     neovim
     nixpkgs-fmt
