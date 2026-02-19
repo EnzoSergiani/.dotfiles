@@ -31,12 +31,10 @@ wall_selection=$(
 
 if [[ -n "$wall_selection" ]]; then
   WALLPAPER_PATH="${WALL_DIR}/${wall_selection}"
-
   ln -sf "$WALLPAPER_PATH" "$CURRENT_WALL_LINK"
 
-  hyprctl hyprpaper unload all
-  hyprctl hyprpaper preload "$CURRENT_WALL_LINK"
-  hyprctl hyprpaper wallpaper ",$CURRENT_WALL_LINK"
+  hyprctl hyprpaper wallpaper "eDP-1,$WALLPAPER_PATH"
+  hyprctl hyprpaper wallpaper "DP-2,$WALLPAPER_PATH"
 fi
 
 exit 0
