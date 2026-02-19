@@ -104,6 +104,7 @@
     "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "Ethernet\nIP: {ipaddr}/{cidr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
+    "on-click": "hyprctl dispatch exec '[float; size 800 600; center]' kitty nmtui",
     "interval": 3,
   },
 
@@ -153,6 +154,7 @@
     "format": " {icon}",
     "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
     "tooltip-format": "{used:0.1f}G / {total:0.1f}G ({percentage}%)",
+    "on-click": "hyprctl dispatch exec '[float; size 800 600; center] bash -c \"kitty btop -p 4\"'",
     "max-length": 10,
   },
 
@@ -161,6 +163,7 @@
     "format": " {icon}",
     "rotate": 0,
     "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "on-click": "hyprctl dispatch exec '[float; size 800 600; center] bash -c \"kitty btop -p 1\"'",
   },
 
   "temperature": {
@@ -178,6 +181,7 @@
     "interval": 30,
     "format": "󰋊 {}",
     "return-type": "json",
+    "on-click": "hyprctl dispatch exec '[float; size 800 600; center] kitty ncdu'",
   },
 
   "battery": {
