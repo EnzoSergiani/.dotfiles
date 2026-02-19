@@ -1,25 +1,25 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    <home-manager/nixos>
   ];
 
-  nix.nixPath = [
-    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
-    "nixos-config=/etc/nixos/configuration.nix"
-    "/nix/var/nix/profiles/per-user/root/channels"
-  ];
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # === Boot ===
   boot.loader.systemd-boot.enable = true;
   boot.loader.timeout = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # === Network ===
   networking.hostName = "bespin";
   networking.networkmanager.enable = true;
 
+  # === Localisation ===
   time.timeZone = "Europe/Paris";
+  console.keyMap = "fr";
 
   i18n.defaultLocale = "fr_FR.UTF-8";
   i18n.extraLocaleSettings = {
@@ -34,40 +34,51 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  console.keyMap = "fr";
-
   services.xserver.xkb = {
     layout = "fr";
     variant = "azerty";
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
+  # === Users ===
   users.users.dousai = {
     isNormalUser = true;
     description = "Dousai";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     shell = pkgs.zsh;
   };
 
+  # === System programs ===
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
+  programs.dconf.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    wget
     curl
     tree
+    wget
+    usbutils
+    ncdu
+    brightnessctl
+    gcc
+    cmake
   ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
 
-  services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  # === Services ===
+  services.gvfs.enable = true;
+  services.blueman.enable = true;
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "ignore";
+  };
+
+  # === Bluetooth ===
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -81,18 +92,32 @@
       };
     };
   };
-  services.blueman.enable = true;
 
-  services.gvfs.enable = true;
-
-  services.logind.settings.Login = {
-    HandlePowerKey = "ignore";
-    HandlePowerKeyLongPress = "ignore";
+  # === Audio ===
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
   };
 
-  system.stateVersion = "25.11";
+  environment.etc."wireplumber/main.lua.d/51-bluetooth-disable-hfp.lua".text = ''
+    bluez_monitor.properties = {
+      ["bluez5.enable-hfp-hf"] = false,
+      ["bluez5.enable-hsp-hs"] = false,
+      ["bluez5.enable-msbc"] = true,
+    }
+  '';
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.dousai = import "/home/dousai/.dotfiles/nixos/dousai.nix";
+  # === Virtualisation ===
+  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.runAsRoot = false;
+
+  # === Xbox controller ===
+  hardware.xpadneo.enable = false;
+  boot.kernelParams = [ "hid_quirks=0x045e:0x02ea:0x0004" ];
+  boot.kernelModules = [ "xpad" ];
+  boot.blacklistedKernelModules = [ "xpadneo" ];
+
+  system.stateVersion = "25.11";
 }

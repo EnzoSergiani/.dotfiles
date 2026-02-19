@@ -12,15 +12,11 @@ alias open="xdg-open"
 alias cls="clear"
 alias now="date '+%Y-%m-%d %H:%M:%S'"
 
-alias nix-rebuild="sudo nixos-rebuild switch"
-alias nix-upgrade="sudo nixos-rebuild switch --upgrade"
+alias nix-rebuild="sudo nixos-rebuild switch --flake ~/.dotfiles/nixos#bespin --impure"
+alias nix-rebuild-test="sudo nixos-rebuild test --flake ~/.dotfiles/nixos#bespin --impure"
+alias nix-rebuild-trace="sudo nixos-rebuild switch --flake ~/.dotfiles/nixos#bespin --impure --show-trace"
+alias nix-update="sudo nix flake update --flake ~/.dotfiles/nixos"
 alias nix-clean="sudo nix-collect-garbage -d"
-alias nix-search="nix search nixpkgs"
-alias nix-install="nix-env -iA nixos."
-alias nix-upgrade="nix-env -u"
-alias nix-remove="nix-env -e"
-alias nix-list="nix-env -q"
-alias nix-optimize="sudo nix-collect-garbage -d && sudo nix-store --optimise"
 
 alias -s py=$EDITOR
 alias -s c=$EDITOR
