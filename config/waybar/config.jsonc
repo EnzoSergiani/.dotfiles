@@ -1,37 +1,235 @@
 {
-  "include": "~/.dotfiles/config/waybar/modules.jsonc",
   "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 7,
+  "margin-bottom": 0,
   "exclusive": true,
   "passthrough": false,
-  "position": "top",
-  "spacing": 3,
-  "fixed-center": true,
-  "ipc": true,
-  "margin-top": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "margin-bottom": 0,
-  "output": ["eDP-1"],
-
-  "modules-left": ["hyprland/workspaces", "mpris"],
-
-  "modules-center": ["hyprland/window", "clock"],
-
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+  "modules-left": ["custom/left-margin", "hyprland/workspaces", "mpris"],
+  "modules-center": ["clock", "hyprland/window"],
   "modules-right": [
-    "custom/openBracket",
-    "cpu",
-    "custom/separator",
+    "custom/network",
+    "custom/bluetooth",
+    "pulseaudio#microphone",
+    "custom/volume",
+    "backlight",
     "memory",
-    "custom/separator",
+    "cpu",
     "temperature",
-    "custom/separator",
-    "network",
-    "custom/separator",
-    "pulseaudio",
-    "custom/separator",
+    "custom/disk",
     "battery",
     "custom/separator",
-    "custom/swaync",
-    "custom/closeBracket",
+    "custom/notification",
+    "custom/right-margin",
   ],
+
+  "hyprland/window": {
+    "format": "",
+    "max-length": 0,
+    "separate-outputs": true,
+    "offscreen-css": true,
+    "offscreen-css-text": "",
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "active": "",
+    },
+  },
+
+  "wlr/workspaces": {
+    "persistent-workspaces": {
+      "1": [],
+    },
+  },
+
+  "mpris": {
+    "format": "| <span color='white'><span>{player_icon}</span> {dynamic}</span>",
+    "format-paused": "| <span color='grey'><span>{status_icon}</span> {dynamic}</span>",
+    "max-length": 100,
+    "interval": 1,
+    "player-icons": {
+      "default": "⏸",
+    },
+    "status-icons": {
+      "paused": "▶",
+    },
+  },
+
+  "clock": {
+    "format": "{:L%H:%M, %a %d %b %Y}",
+    "locale": "fr_FR.utf8",
+    "timezone": "Europe/Paris",
+    "rotate": 0,
+    "on-click": "/usr/local/bin/ags -t ActivityCenter",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "days": "<span color='#ebdbb2'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ebdbb2'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+    },
+  },
+
+  "custom/network": {
+    "exec": "~/.dotfiles/config/waybar/script/network.sh",
+    "interval": 3,
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "hyprctl dispatch exec '[float; size 800 600; center]' kitty nmtui",
+  },
+
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "Ethernet\nIP: {ipaddr}/{cidr}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+  },
+
+  "custom/bluetooth": {
+    "exec": "~/.dotfiles/config/waybar/script/bluetooth.sh",
+    "interval": 1,
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "blueman-manager",
+    "on-click-right": "~/.dotfiles/config/waybar/script/bluetooth-toggle.sh",
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " 󰪥",
+    "format-source-muted": " 󰝦",
+    "on-click": "pavucontrol -t 4",
+    "on-click-right": "pamixer --default-source -t",
+    "tooltip-format": "{source_desc}",
+    "tooltip-format-muted": "Muted",
+    "scroll-step": 5,
+  },
+
+  "custom/volume": {
+    "exec": "~/.dotfiles/config/waybar/script/volume.sh",
+    "interval": 1,
+    "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t && pkill -RTMIN+1 waybar",
+    "format": " {}",
+    "return-type": "json",
+    "signal": 1,
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "rotate": 0,
+    "format": "󰃠 {icon}",
+    "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "tooltip-format": "{percent}%",
+    "scroll-step": 1,
+    "min-length": 2,
+  },
+
+  "memory": {
+    "interval": 1,
+    "rotate": 0,
+    "format": " {icon}",
+    "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G ({percentage}%)",
+    "max-length": 10,
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": " {icon}",
+    "rotate": 0,
+    "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+  },
+
+  "temperature": {
+    "interval": 1,
+    "format": " {icon}",
+    "critical-threshold": 80,
+    "format-critical": " {icon}",
+    "tooltip-format": "{temperatureC}°C",
+    "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "on-click": "gnome-system-monitor",
+  },
+
+  "custom/disk": {
+    "exec": "~/.dotfiles/config/waybar/script/disk.sh",
+    "interval": 30,
+    "format": "󰋊 {}",
+    "return-type": "json",
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20,
+    },
+    "format": "󰂄{icon}",
+    "format-charging": "󱐋{icon}",
+    "format-plugged": "{icon}",
+    "format-discharging": "󰁺{icon}",
+    "format-full": "󰂅 {icon}",
+    "format-icons": ["󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+    "tooltip-format": "{capacity}%",
+    "tooltip-format-discharging": "{capacity}% • {power:>1.0f}W↓",
+    "tooltip-format-charging": "{capacity}% • {power:>1.0f}W↑",
+    "interval": 5,
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰅸",
+      "none": "󰂜",
+      "dnd-notification": "󰅸",
+      "dnd-none": "󱏨",
+      "inhibited-notification": "󰅸",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "󰅸",
+      "dnd-inhibited-none": "󱏨",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click-right": "swaync-client -d -sw",
+    "on-click": "swaync-client -t -sw",
+    "escape": true,
+  },
+
+  "custom/left-margin": {
+    "format": " ",
+  },
+
+  "custom/right-margin": {
+    "format": " ",
+  },
+
+  "custom/separator": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false,
+  },
 }
