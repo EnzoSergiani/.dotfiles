@@ -2,14 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    clang-tools
     lua-language-server
     neovim
     nixpkgs-fmt
     nodePackages.prettier
     pyright
     ripgrep
-    rust-analyzer
     shfmt
     stylua
     taplo

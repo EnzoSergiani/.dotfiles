@@ -36,5 +36,12 @@
         }
       ];
     };
+
+    templates = {
+      c = { path = ./flake-templates/c; description = "C"; };
+      cpp = { path = ./flake-templates/cpp; description = "C++"; };
+      python = { path = ./flake-templates/python; description = "Python"; };
+      rust = { path = ./flake-templates/rust; description = "Rust"; };
+    };
   };
 }

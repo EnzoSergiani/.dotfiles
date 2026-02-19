@@ -60,6 +60,16 @@ alias -s odt="libreoffice"
 alias -s ods="libreoffice"
 alias -s odp="libreoffice"
 
+alias flake-rust="nix flake init -t path:$HOME/.dotfiles/nixos#rust"
+alias flake-cpp="nix flake init -t path:$HOME/.dotfiles/nixos#cpp"
+alias flake-c="nix flake init -t path:$HOME/.dotfiles/nixos#c"
+alias flake-python="nix flake init -t path:$HOME/.dotfiles/nixos#python"
+
+alias flake-update="nix flake update"
+alias flake-check="nix flake check"
+alias flake-show="nix flake show"
+alias dev="nix develop"
+
 nvim() {
   if [[ "$TERM" == "xterm-kitty" ]]; then
     kitty @ set-spacing padding=0
