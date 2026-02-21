@@ -5,8 +5,15 @@
     /etc/nixos/hardware-configuration.nix
   ];
 
+  # === Nix ===
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # === Boot ===
   boot.loader.systemd-boot.enable = true;
@@ -119,5 +126,6 @@
   boot.kernelModules = [ "xpad" ];
   boot.blacklistedKernelModules = [ "xpadneo" ];
 
+  # === System ===
   system.stateVersion = "25.11";
 }

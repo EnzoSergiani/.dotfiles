@@ -6,17 +6,37 @@ alias ..="cd .."
 alias rm="trash-put"
 alias shred-trash='find ~/.local/share/Trash/files -type f -exec shred -u {} + && rm -rf ~/.local/share/Trash/files/* ~/.local/share/Trash/info/*'
 alias -- '-'='cd -'
-
 alias grep="grep --color=auto"
 alias open="xdg-open"
 alias cls="clear"
 alias now="date '+%Y-%m-%d %H:%M:%S'"
 
-alias nix-rebuild="sudo nixos-rebuild switch --flake ~/.dotfiles/nixos#bespin --impure"
-alias nix-rebuild-test="sudo nixos-rebuild test --flake ~/.dotfiles/nixos#bespin --impure"
-alias nix-rebuild-trace="sudo nixos-rebuild switch --flake ~/.dotfiles/nixos#bespin --impure --show-trace"
-alias nix-update="sudo nix flake update --flake ~/.dotfiles/nixos"
+alias nix-rebuild="sudo nixos-rebuild switch --flake $HOME/.dotfiles/nixos#bespin --impure"
+alias nix-rebuild-test="sudo nixos-rebuild test --flake $HOME/.dotfiles/nixos#bespin --impure"
+alias nix-rebuild-trace="sudo nixos-rebuild switch --flake $HOME/.dotfiles/nixos#bespin --impure --show-trace"
+
+alias nix-update="sudo nix flake update --flake $HOME/.dotfiles/nixos"
+
 alias nix-clean="sudo nix-collect-garbage -d"
+alias nix-clean-user="nix-collect-garbage -d"
+alias nix-clean-all="nix-list-gen && nix-delete-old && sudo nix-collect-garbage -d && nix-optimise"
+
+alias nix-list-gen="sudo nix-env --list-generations --profile /nix/var/nix/profiles/system"
+alias nix-delete-old="sudo nix-env --delete-generations old --profile /nix/var/nix/profiles/system"
+
+alias nix-store-size="du -sh /nix/store"
+alias nix-store-roots="nix-store --gc --print-roots"
+alias nix-optimise="sudo nix store optimise"
+
+alias flake-rust="nix flake init -t path:$HOME/.dotfiles/nixos#rust"
+alias flake-cpp="nix flake init -t path:$HOME/.dotfiles/nixos#cpp"
+alias flake-c="nix flake init -t path:$HOME/.dotfiles/nixos#c"
+alias flake-python="nix flake init -t path:$HOME/.dotfiles/nixos#python"
+
+alias flake-update="nix flake update"
+alias flake-check="nix flake check"
+alias flake-show="nix flake show"
+alias dev="nix develop"
 
 alias -s py=$EDITOR
 alias -s c=$EDITOR
@@ -59,16 +79,6 @@ alias -s pptx="libreoffice"
 alias -s odt="libreoffice"
 alias -s ods="libreoffice"
 alias -s odp="libreoffice"
-
-alias flake-rust="nix flake init -t path:$HOME/.dotfiles/nixos#rust"
-alias flake-cpp="nix flake init -t path:$HOME/.dotfiles/nixos#cpp"
-alias flake-c="nix flake init -t path:$HOME/.dotfiles/nixos#c"
-alias flake-python="nix flake init -t path:$HOME/.dotfiles/nixos#python"
-
-alias flake-update="nix flake update"
-alias flake-check="nix flake check"
-alias flake-show="nix flake show"
-alias dev="nix develop"
 
 nvim() {
   if [[ "$TERM" == "xterm-kitty" ]]; then
