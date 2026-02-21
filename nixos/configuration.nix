@@ -79,6 +79,7 @@
   # === Services ===
   services.gvfs.enable = true;
   services.blueman.enable = true;
+  services.getty.autologinUser = "dousai";
 
   services.logind.settings.Login = {
     HandlePowerKey = "ignore";
