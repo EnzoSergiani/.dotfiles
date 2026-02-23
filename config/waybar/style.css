@@ -52,6 +52,14 @@ window#waybar.empty {
   animation-direction: alternate;
 }
 
+#cava {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  opacity: 1;
+  margin: 3px 0px 0px 0px;
+}
+
 #clock {
   color: #ffffff;
   font-size: 15px;
