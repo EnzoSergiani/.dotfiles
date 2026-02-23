@@ -32,22 +32,14 @@ fi
 printf '%s\n%s\n%s\n' "$RX_NOW" "$TX_NOW" "$TIME_NOW" >"$CACHE"
 
 if [[ "$INTERFACE" == w* ]]; then
-  ESSID=$(nmcli dev show "$INTERFACE" 2>/dev/null | grep "GENERAL.CONNECTION" | awk -F': ' '{print $2}' | xargs)
+  ESSID=$(nmcli -f IN-USE,SSID dev wifi 2>/dev/null | awk '/^\*/{print $2}' | head -n1)
   [[ -z "$ESSID" ]] && ESSID="WiFi"
-
-  SIGNAL=$(iw dev "$INTERFACE" link 2>/dev/null | grep signal | awk '{print $2}')
-  if [[ -n "$SIGNAL" ]]; then
-    PCT=$(((SIGNAL + 110) * 100 / 70))
-    [[ $PCT -lt 0 ]] && PCT=0
-    [[ $PCT -gt 100 ]] && PCT=100
-  else
-    PCT=50
-  fi
-
-  INDEX=$((PCT * 8 / 100))
+  SIGNAL=$(nmcli -f IN-USE,SIGNAL dev wifi 2>/dev/null | awk '/^\*/{print $2}' | head -n1)
+  [[ -z "$SIGNAL" ]] && SIGNAL=0
+  INDEX=$((SIGNAL * 8 / 100))
   [[ $INDEX -gt 8 ]] && INDEX=8
 
-  TOOLTIP="${ESSID}\\nSignal: ${PCT}%\\nIP: ${IP}\\n⇣${RX_SPEED} KB/s ⇡${TX_SPEED} KB/s"
+  TOOLTIP="${ESSID}\\nSignal: ${SIGNAL}%\\nIP: ${IP}\\n⇣${RX_SPEED} KB/s ⇡${TX_SPEED} KB/s"
   printf '{"text":"󰤨 %s","tooltip":"%s","class":"wifi"}\n' "${ICONS[$INDEX]}" "$TOOLTIP"
 else
   TOOLTIP="Ethernet\\nIP: ${IP}\\n⇣${RX_SPEED} KB/s ⇡${TX_SPEED} KB/s"

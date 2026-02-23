@@ -22,5 +22,5 @@ else
     TOOLTIP="$NAME"
   fi
 
-  printf '{"text":" 󰪥","tooltip":"%s","class":"connected"}\n' "$TOOLTIP"
+  printf '{"text":"󰂱 󰪥","tooltip":"%s","class":"connected"}\n' "$TOOLTIP"
 fi

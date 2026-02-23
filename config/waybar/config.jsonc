@@ -53,7 +53,7 @@
   "mpris": {
     "format": "| <span color='white'><span>{player_icon}</span> {dynamic}</span>",
     "format-paused": "| <span color='grey'><span>{status_icon}</span> {dynamic}</span>",
-    "max-length": 100,
+    "max-length": 80,
     "interval": 1,
     "player-icons": {
       "default": "⏸",
@@ -119,8 +119,8 @@
 
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " 󰪥",
-    "format-source-muted": " 󰝦",
+    "format-source": "󰍬 󰪥",
+    "format-source-muted": "󰍭 󰝦",
     "on-click": "pavucontrol -t 4",
     "on-click-right": "pamixer --default-source -t",
     "tooltip-format": "{source_desc}",
@@ -133,7 +133,7 @@
     "interval": 1,
     "on-click": "pavucontrol",
     "on-click-right": "pamixer -t && pkill -RTMIN+1 waybar",
-    "format": " {}",
+    "format": "{}",
     "return-type": "json",
     "signal": 1,
   },
