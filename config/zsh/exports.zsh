@@ -1,5 +1,6 @@
 export LANG=fr_FR.UTF-8
 export EDITOR='nvim'
+export DIRENV_LOG_FORMAT=""
 
 export WALLPAPERS_DIR="$HOME/.dotfiles/wallpapers/"
 export LATEX_DIR="$HOME/latex"

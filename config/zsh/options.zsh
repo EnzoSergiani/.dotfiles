@@ -1,5 +1,5 @@
 chpwd() {
-  lsd -lahh
+  lsd -lah
 
   # Virtual environment auto-activation
   local venv_names=("venv" "env" ".venv" ".env")
@@ -16,18 +16,19 @@ chpwd() {
   done
   if [[ "$venv_found" = false && -n "$VIRTUAL_ENV" ]]; then
     deactivate 2>/dev/null
+  if [[ -f "flake.nix" && "$PWD" != "$HOME/.dotfiles"* ]]; then
+    nvim .
   fi
 }
 
-bindkey ' ' magic-space
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-bindkey '^ ' expand-or-complete
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
 bindkey '^W' backward-kill-word
 bindkey '^U' kill-whole-line
+bindkey ' ' magic-space
+bindkey '^I' expand-or-complete
 bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
-bindkey '^I' expand-or-complete
