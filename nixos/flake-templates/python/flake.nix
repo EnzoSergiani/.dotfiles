@@ -10,40 +10,23 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-
         python = pkgs.python312;
+
+        pythonEnv = python.withPackages (ps: with ps; [
+        ]);
       in
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            python
-            python.pkgs.pip
-            python.pkgs.virtualenv
+            pythonEnv
             pyright
             black
-            python.pkgs.ipython
-          ];
-
-          nativeBuildInputs = with pkgs; [
             gcc
             pkg-config
           ];
 
           shellHook = ''
             echo "🐍 $(python --version)"
-
-            if [ ! -d .venv ]; then
-              echo "→ Creating .venv..."
-              python -m venv .venv
-            fi
-
-            source .venv/bin/activate
-
-            if [ -f requirements.txt ]; then
-              pip install -r requirements.txt --quiet
-            fi
-
-            echo "✓ venv activated: $(which python)"
           '';
         };
       });
