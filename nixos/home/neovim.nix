@@ -5,7 +5,7 @@
     lua-language-server
     neovim
     nixpkgs-fmt
-    nodePackages.prettier
+    prettier
     pyright
     ripgrep
     shfmt

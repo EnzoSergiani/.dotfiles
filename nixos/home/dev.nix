@@ -6,7 +6,7 @@
     lazygit
     nixpkgs-fmt
     nodejs
-    nodePackages.prettier
+    prettier
     python3
     shfmt
   ];
