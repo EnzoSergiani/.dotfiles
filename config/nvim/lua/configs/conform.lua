@@ -1,3 +1,11 @@
+local function bin(name)
+  local env_path = vim.fn.exepath(name)
+  if env_path ~= "" then
+    return env_path
+  end
+  return "/etc/profiles/per-user/dousai/bin/" .. name
+end
+
 local options = {
   formatters_by_ft = {
     -- lua
@@ -39,36 +47,20 @@ local options = {
   },
 
   formatters = {
-    stylua = {
-      command = "/etc/profiles/per-user/dousai/bin/stylua",
-    },
-    shfmt = {
-      command = "/etc/profiles/per-user/dousai/bin/shfmt",
-    },
-    black = {
-      command = "/etc/profiles/per-user/dousai/bin/black",
-    },
-    clang_format = {
-      command = "/etc/profiles/per-user/dousai/bin/clang-format",
-    },
-    rustfmt = {
-      command = "/etc/profiles/per-user/dousai/bin/rustfmt",
-    },
-    prettier = {
-      command = "/etc/profiles/per-user/dousai/bin/prettier",
-    },
-    taplo = {
-      command = "/etc/profiles/per-user/dousai/bin/taplo",
-    },
-    nixpkgs_fmt = {
-      command = "/etc/profiles/per-user/dousai/bin/nixpkgs-fmt",
-    },
+    stylua = { command = bin "stylua" },
+    shfmt = { command = bin "shfmt" },
+    black = { command = bin "black" },
+    clang_format = { command = bin "clang-format" },
+    rustfmt = { command = bin "rustfmt" },
+    prettier = { command = bin "prettier" },
+    taplo = { command = bin "taplo" },
+    nixpkgs_fmt = { command = bin "nixpkgs-fmt" },
     latexindent = {
-      command = "/etc/profiles/per-user/dousai/bin/latexindent",
+      command = bin "latexindent",
       args = { "-c=build", "-g=build/indent.log", "-" },
     },
     ["bibtex-tidy"] = {
-      command = "/etc/profiles/per-user/dousai/bin/bibtex-tidy",
+      command = bin "bibtex-tidy",
       args = { "--modify" },
     },
   },
