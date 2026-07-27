@@ -81,7 +81,6 @@
   # === Services ===
   services.gvfs.enable = true;
   services.blueman.enable = true;
-  services.getty.autologinUser = "dousai";
 
   services.logind.settings.Login = {
     HandlePowerKey = "ignore";
@@ -128,6 +127,11 @@
   boot.kernelParams = [ "hid_quirks=0x045e:0x02ea:0x0004" ];
   boot.kernelModules = [ "xpad" ];
   boot.blacklistedKernelModules = [ "xpadneo" ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # === System ===
   system.stateVersion = "25.11";

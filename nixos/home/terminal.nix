@@ -22,5 +22,6 @@ in
     initContent = ''
       source ${dotfiles}/config/zsh/.zshrc
     '';
+    dotDir = config.home.homeDirectory;
   };
 }

@@ -36,7 +36,6 @@ alias flake-python="nix flake init -t path:$HOME/.dotfiles/nixos#python && echo 
 alias flake-update="nix flake update"
 alias flake-check="nix flake check"
 alias flake-show="nix flake show"
-alias dev="nix develop"
 
 alias -s py=$EDITOR
 alias -s c=$EDITOR
