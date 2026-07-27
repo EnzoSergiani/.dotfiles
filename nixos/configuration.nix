@@ -50,7 +50,7 @@
   users.users.dousai = {
     isNormalUser = true;
     description = "Dousai";
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -75,6 +75,8 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  virtualisation.docker.enable = true;
 
   # === Services ===
   services.gvfs.enable = true;
