@@ -9,6 +9,7 @@ let in
     ./home/media.nix
     ./home/neovim.nix
     ./home/qemu.nix
+    ./home/retroarch.nix
     ./home/softwares.nix
     ./home/system.nix
     ./home/terminal.nix
