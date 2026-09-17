@@ -133,6 +133,13 @@
     nix-direnv.enable = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    user = "dousai";
+    dataDir = "/home/dousai";
+    configDir = "/home/dousai/.config/syncthing";
+  };
+
   # === System ===
   system.stateVersion = "25.11";
 }
