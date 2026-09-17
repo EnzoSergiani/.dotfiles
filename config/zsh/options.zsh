@@ -1,10 +1,23 @@
 chpwd() {
   lsd -lah
-
-  if [[ -f "flake.nix" && "$PWD" != "$HOME/.dotfiles"* ]]; then
-    nvim .
+  if [[ -f "flake.nix" && "$PWD" != "$HOME/.dotfiles"* && -z "$IN_NVIM" ]]; then
+    IN_NVIM=1 nvim .
   fi
 }
+
+flake-init() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: flake-init <c|cpp|python|rust|typst>"
+    return 1
+  fi
+  nix flake init -t "path:$HOME/.dotfiles/nixos#$1" && echo 'use flake' >.envrc && direnv allow
+}
+_flake_init_templates() {
+  local -a templates
+  templates=(c cpp python rust typst)
+  _describe 'template' templates
+}
+compdef _flake_init_templates flake-init
 
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line

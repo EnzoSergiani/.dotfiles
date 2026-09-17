@@ -28,11 +28,6 @@ alias nix-store-size="du -sh /nix/store"
 alias nix-store-roots="nix-store --gc --print-roots"
 alias nix-optimise="sudo nix store optimise"
 
-alias flake-rust="nix flake init -t path:$HOME/.dotfiles/nixos#rust && echo 'use flake' > .envrc && direnv allow"
-alias flake-cpp="nix flake init -t path:$HOME/.dotfiles/nixos#cpp && echo 'use flake' > .envrc && direnv allow"
-alias flake-c="nix flake init -t path:$HOME/.dotfiles/nixos#c && echo 'use flake' > .envrc && direnv allow"
-alias flake-python="nix flake init -t path:$HOME/.dotfiles/nixos#python && echo 'use flake' > .envrc && direnv allow"
-
 alias flake-update="nix flake update"
 alias flake-check="nix flake check"
 alias flake-show="nix flake show"
