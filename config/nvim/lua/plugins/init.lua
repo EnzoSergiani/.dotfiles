@@ -33,6 +33,7 @@ return {
         "python",
         "markdown",
         "latex",
+        "astro",
       },
     },
   },
@@ -229,4 +230,6 @@ return {
       -- },
     },
   },
+
+  { "wuelnerdotexe/vim-astro", ft = "astro" },
 }

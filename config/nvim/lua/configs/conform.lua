@@ -5,7 +5,6 @@ local function bin(name)
   end
   return "/etc/profiles/per-user/dousai/bin/" .. name
 end
-
 local options = {
   formatters_by_ft = {
     -- lua
@@ -40,12 +39,13 @@ local options = {
     typescript = { "prettier" },
     javascriptreact = { "prettier" },
     typescriptreact = { "prettier" },
+    -- astro
+    astro = { "prettier" },
     -- nix
     nix = { "nixpkgs_fmt" },
     -- Universal Formats
     ["*"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
   },
-
   formatters = {
     stylua = { command = bin "stylua" },
     shfmt = { command = bin "shfmt" },
@@ -64,11 +64,9 @@ local options = {
       args = { "--modify" },
     },
   },
-
   format_on_save = {
     timeout_ms = 500,
     lsp_fallback = true,
   },
 }
-
 return options

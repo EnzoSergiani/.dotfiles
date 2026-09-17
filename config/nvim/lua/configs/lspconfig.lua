@@ -17,6 +17,7 @@ local servers = {
   "texlab",
   "ltex",
   "nil_ls",
+  "astro",
 }
 
 vim.lsp.config.ltex = {
@@ -26,6 +27,32 @@ vim.lsp.config.ltex = {
     },
   },
   checkFrequency = "save",
+}
+
+local tsc_path = bin "tsc"
+local tsdk_path = ""
+if tsc_path ~= "" then
+  local store_root = tsc_path:match "(.*)/bin/tsc$"
+  if store_root then
+    tsdk_path = store_root .. "/lib/node_modules/typescript/lib"
+  end
+end
+
+vim.lsp.config.astro = {
+  cmd = { bin "astro-ls", "--stdio" },
+  init_options = {
+    typescript = {
+      tsdk = tsdk_path,
+    },
+  },
+}
+
+vim.lsp.config.cssls = {
+  filetypes = { "css", "scss", "less", "astro" },
+  settings = {
+    css = { validate = true },
+    scss = { validate = true },
+  },
 }
 
 vim.lsp.enable(servers)
