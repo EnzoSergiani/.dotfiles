@@ -38,10 +38,28 @@
     };
 
     templates = {
-      c = { path = ./flake-templates/c; description = "C"; };
-      cpp = { path = ./flake-templates/cpp; description = "C++"; };
-      python = { path = ./flake-templates/python; description = "Python"; };
-      rust = { path = ./flake-templates/rust; description = "Rust"; };
+      c = {
+        path = ./flake-templates/c;
+        description = "C development environment";
+      };
+      cpp = {
+        path = ./flake-templates/cpp;
+        description = "C++ development environment";
+      };
+      python = {
+        path = ./flake-templates/python;
+        description = "Python development environment";
+      };
+      rust = {
+        path = ./flake-templates/rust;
+        description = "Rust development environment";
+      };
+      typst = {
+        path = ./flake-templates/typst;
+        description = "Typst development environment";
+      };
+      default = self.templates.rust;
     };
+
   };
 }

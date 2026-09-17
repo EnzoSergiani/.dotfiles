@@ -6,3 +6,10 @@ export LATEX_DIR="$HOME/latex"
 export DEV_DIR="$HOME/dev"
 export VM_DIR="$HOME/dev/vm"
 export PROJECTS_DIR="$HOME/dev/projects"
+export SHARP_FORCE_GLOBAL_LIBVIPS=1
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
