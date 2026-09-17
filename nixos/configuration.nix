@@ -70,6 +70,8 @@
     brightnessctl
     gcc
     cmake
+    jq
+    iw
   ];
 
   fonts.packages = with pkgs; [
