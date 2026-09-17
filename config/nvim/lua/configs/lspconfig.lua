@@ -1,5 +1,13 @@
 require("nvchad.configs.lspconfig").defaults()
 
+local function bin(name)
+  local env_path = vim.fn.exepath(name)
+  if env_path ~= "" then
+    return env_path
+  end
+  return "/etc/profiles/per-user/dousai/bin/" .. name
+end
+
 local servers = {
   "html",
   "cssls",
@@ -18,6 +26,7 @@ local servers = {
   "ltex",
   "nil_ls",
   "astro",
+  "tinymist",
 }
 
 vim.lsp.config.ltex = {
@@ -52,6 +61,14 @@ vim.lsp.config.cssls = {
   settings = {
     css = { validate = true },
     scss = { validate = true },
+  },
+}
+
+vim.lsp.config.tinymist = {
+  cmd = { bin "tinymist" },
+  settings = {
+    exportPdf = "onSave",
+    formatterMode = "typstyle", -- aligne le formatage interne du LSP sur typstyle
   },
 }
 

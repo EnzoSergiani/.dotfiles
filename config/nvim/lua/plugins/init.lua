@@ -34,6 +34,7 @@ return {
         "markdown",
         "latex",
         "astro",
+        "typst",
       },
     },
   },

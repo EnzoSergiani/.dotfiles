@@ -156,3 +156,11 @@ map("n", "<leader>lC", function()
   vim.cmd "!latexmk -C"
   vim.notify("Nettoyage complet", vim.log.levels.INFO)
 end, { desc = "LaTeX Clean all" })
+
+-- Typst
+vim.keymap.set("n", "<leader>tp", function()
+  require("typst_preview").start()
+end, { desc = "Typst: preview" })
+vim.keymap.set("n", "<leader>tq", function()
+  require("typst_preview").stop()
+end, { desc = "Typst: stop preview" })

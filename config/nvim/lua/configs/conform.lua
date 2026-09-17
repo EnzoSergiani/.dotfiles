@@ -43,6 +43,8 @@ local options = {
     astro = { "prettier" },
     -- nix
     nix = { "nixpkgs_fmt" },
+    -- typst
+    typst = { "typstyle" },
     -- Universal Formats
     ["*"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
   },
@@ -63,6 +65,7 @@ local options = {
       command = bin "bibtex-tidy",
       args = { "--modify" },
     },
+    typstyle = { command = bin "typstyle" },
   },
   format_on_save = {
     timeout_ms = 500,
