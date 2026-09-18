@@ -5,7 +5,6 @@ let in
   imports = [
     ./home/dev.nix
     ./home/hyprland.nix
-    ./home/latex.nix
     ./home/media.nix
     ./home/neovim.nix
     ./home/qemu.nix
