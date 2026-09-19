@@ -6,7 +6,7 @@ declare -A COMMANDS=(
   ["lock"]="hyprlock"
   ["suspend"]="systemctl suspend"
   ["disconnect"]="hyprctl dispatch exit"
-  ["screenshot"]="grim -g \"\$(slurp)\" ~/Pictures/screenshot-\$(date +%s).png"
+  ["screenshot"]="grim -g \"\$(slurp)\" ~/pictures/screenshot/\$(date +%s).png"
 )
 
 ORDER=(

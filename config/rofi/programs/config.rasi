@@ -50,7 +50,7 @@ mainbox {
 menubox {
     enabled:                     true;
     spacing:                     10px;
-    margin:                      0px 2px;
+    margin:                      0px 0px;
     padding:                     4px 12px;
     expand:                      false;
     border:                      0px solid;
