@@ -1,0 +1,82 @@
+@import "../colors.rasi"
+
+configuration {
+    show-icons:                  true;
+    font:                        "DepartureMono Nerd Font Bold 15";
+}
+
+* {
+    background-colour:           var(background);
+    foreground-colour:           var(foreground);
+    alternate-background:        var(background-alt);
+}
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    width:                       460px;
+    border:                      1px solid;
+    border-color:                @bg;
+    border-radius:                3px;
+    background-color:            @background-colour;
+}
+
+mainbox {
+    children:                    [ "listview", "inputbar" ];
+    spacing:                     0px;
+    padding:                     0px;
+    background-color:            transparent;
+}
+
+inputbar {
+    enabled:                     true;
+    padding:                     10px;
+    border:                      1px 0px 0px 0px;
+    border-color:                @bg;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+    children:                    [ "prompt" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+}
+
+listview {
+    enabled:                     true;
+    lines:                       1;
+    columns:                     1;
+    cycle:                       true;
+    scrollbar:                   false;
+    flow:                        horizontal;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     20px;
+    border:                      0px solid;
+    background-color:            transparent;
+}
+
+element {
+    orientation:                 vertical;
+    border:                      0px solid;
+    background-color:            transparent;
+}
+
+element selected.normal {
+    background-color:            transparent;
+}
+
+element-icon {
+    size:                        420px;
+    fixed-size:                  true;
+}
+
+element-text {
+    enabled:                     false;
+}
