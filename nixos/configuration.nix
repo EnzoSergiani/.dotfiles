@@ -76,6 +76,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    nerd-fonts.departure-mono
   ];
 
   virtualisation.docker.enable = true;
@@ -145,5 +146,5 @@
   services.getty.autologinUser = "dousai";
 
   # === System ===
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
