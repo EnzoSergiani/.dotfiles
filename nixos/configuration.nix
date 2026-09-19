@@ -142,6 +142,8 @@
     configDir = "/home/dousai/.config/syncthing";
   };
 
+  services.getty.autologinUser = "dousai";
+
   # === System ===
   system.stateVersion = "25.11";
 }
