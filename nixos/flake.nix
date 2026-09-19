@@ -20,7 +20,6 @@
       system = "x86_64-linux";
 
       specialArgs = {
-        inherit zen-browser;
         inputs = { inherit nixpkgs home-manager zen-browser; };
         hardwareConfig = /etc/nixos/hardware-configuration.nix;
       };
