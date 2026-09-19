@@ -1,13 +1,10 @@
-@import "colors.rasi"
+@import "../colors.rasi"
 
 configuration {
-    modi:                       "drun";
-    show-icons:                 false;
-    display-drun:               "OPEN";
-    font:                       "DepartureMono Nerd Font Bold 11";
-    drun-display-format:        "{name}";
-    case-sensitive:             false;
-    matching:                   "normal";
+    show-icons:                  false;
+    font:                        "DepartureMono Nerd Font Bold 11";
+    case-sensitive:              false;
+    matching:                    "normal";
 }
 
 * {
@@ -53,39 +50,15 @@ mainbox {
 menubox {
     enabled:                     true;
     spacing:                     10px;
-    margin:                      0px 0px;
+    margin:                      0px 2px;
     padding:                     4px 12px;
     expand:                      false;
     border:                      0px solid;
     border-color:                rgba(244, 244, 244, 25%);
-    border-radius:               0px 0px 3px 3px;
+    border-radius:                0px 0px 3px 3px;
     background-color:            @background-colour;
     children:                    [ "prompt", "entry", "listview" ];
     orientation:                 horizontal;
-}
-
-spacerbox {
-    enabled:                     true;
-    expand:                      true;
-    background-color:            transparent;
-}
-
-prompt {
-    enabled:                     true;
-    padding:                     0px 10px;
-    border:                      1px solid;
-    border-color:                rgba(244, 244, 244, 25%);
-    border-radius:               3px;
-    background-color:            @alternate-background;
-    text-color:                  @foreground-colour;
-}
-
-textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "::";
-    background-color:            inherit;
-    text-color:                  inherit;
 }
 
 entry {
@@ -99,9 +72,26 @@ entry {
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "Search";
     placeholder-color:           inherit;
     vertical-align:              0.5;
+}
+
+spacerbox {
+    enabled:                     true;
+    expand:                      true;
+    background-color:            transparent;
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     0px 10px;
+    border:                      1px solid;
+    border-color:                rgba(244, 244, 244, 25%);
+    border-radius:                3px;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+    markup:                      true;
 }
 
 listview {
@@ -127,18 +117,13 @@ element {
     padding:                     0px 8px;
     border:                      1px solid;
     border-color:                rgba(244, 244, 244, 25%);
-    border-radius:               3px;
+    border-radius:                3px;
     background-color:            transparent;
     text-color:                  @foreground-colour;
     cursor:                      pointer;
 }
 
 element normal.normal {
-    background-color:            var(normal-background);
-    text-color:                  var(normal-foreground);
-}
-
-element alternate.normal {
     background-color:            var(normal-background);
     text-color:                  var(normal-foreground);
 }
@@ -152,6 +137,7 @@ element selected.normal {
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
+    cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }

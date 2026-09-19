@@ -1,8 +1,21 @@
 * {
-    background:        #1E1E1E;
-    background-alt:    #1E1E1E;
-    foreground:        #ffffff;
-    selected:          #ffffff;
-    active:            #ffffff;
-    urgent:            #ffffff;
+    bg:            #000000;
+    bg-alt:        #111111;
+    text:          #e4e4e4;
+    warning:       #ffb454;
+    error:         #c73e3e;
+    ok:            #19b83c;
+    blur:          #6e6e6e;
+    active:        #202020;
+    bg-hover:      #1a1a1a;
+    border:        #343434;
+    screen-glow:   #f4f4f4;
+    screen-bg:     #0a0a0a;
+
+    background:        @screen-bg;
+    background-alt:    @bg-alt;
+    foreground:        @screen-glow;
+    selected:          @screen-glow;
+    active:            @screen-glow;
+    urgent:            @error;
 }
