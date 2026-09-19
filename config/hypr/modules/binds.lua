@@ -60,7 +60,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(progs.lockscreen), { locked = true })
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(progs.navigator))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = 0 }))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.dotfiles/config/rofi/wallpapers/script.sr"), { locked = true })
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.dotfiles/config/rofi/wallpapers/script.sh"), { locked = true })
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.dotfiles/config/rofi/programs/script.sh"), { locked = true })
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("~/.dotfiles/config/rofi/scripts/clipboard.sh"), { locked = true })
 hl.bind("Print", hl.dsp.exec_cmd("slurp | grim -g - ~/pictures/screenshot/$(date +'%Y%m%d%H%M%S').png"))
