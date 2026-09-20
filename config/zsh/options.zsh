@@ -7,14 +7,14 @@ chpwd() {
 
 flake-init() {
   if [[ -z "$1" ]]; then
-    echo "Usage: flake-init <c|cpp|python|rust|typst>"
+    echo "Usage: flake-init <c|cpp|python|rust|letter|report|resume>"
     return 1
   fi
   nix flake init -t "path:$HOME/.dotfiles/nixos#$1" && echo 'use flake' >.envrc && direnv allow
 }
 _flake_init_templates() {
   local -a templates
-  templates=(c cpp python rust typst)
+  templates=(c cpp python rust letter report resume)
   _describe 'template' templates
 }
 compdef _flake_init_templates flake-init

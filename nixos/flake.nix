@@ -53,12 +53,19 @@
         path = ./flake-templates/rust;
         description = "Rust development environment";
       };
-      typst = {
-        path = ./flake-templates/typst;
-        description = "Typst development environment";
+      letter = {
+        path = ./flake-templates/letter;
+        description = "Typst (letter) development environment";
+      };
+      report = {
+        path = ./flake-templates/report;
+        description = "Typst (report) development environment";
+      };
+      resume = {
+        path = ./flake-templates/resume;
+        description = "Typst (resume) development environment";
       };
       default = self.templates.rust;
     };
-
   };
 }

@@ -1,5 +1,6 @@
 local M = {}
 local watch_jobs = {}
+local zathura_jobs = {}
 
 function M.start()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -8,7 +9,6 @@ function M.start()
     return
   end
 
-  -- On force main.typ comme racine, peu importe le buffer actif
   local root = vim.fn.getcwd() .. "/main.typ"
   local pdf = vim.fn.fnamemodify(root, ":r") .. ".pdf"
 
@@ -18,7 +18,7 @@ function M.start()
     end,
   })
 
-  vim.fn.jobstart({ "zathura", pdf }, { detach = true })
+  zathura_jobs[bufnr] = vim.fn.jobstart({ "zathura", pdf }, { detach = true })
   vim.notify "Compilation continue + Zathura lancés"
 end
 
@@ -28,11 +28,18 @@ function M.stop()
     vim.fn.jobstop(watch_jobs[bufnr])
     watch_jobs[bufnr] = nil
   end
+  if zathura_jobs[bufnr] then
+    vim.fn.jobstop(zathura_jobs[bufnr])
+    zathura_jobs[bufnr] = nil
+  end
 end
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
     for _, id in pairs(watch_jobs) do
+      vim.fn.jobstop(id)
+    end
+    for _, id in pairs(zathura_jobs) do
       vim.fn.jobstop(id)
     end
   end,

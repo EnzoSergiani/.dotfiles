@@ -67,8 +67,8 @@ vim.lsp.config.cssls = {
 vim.lsp.config.tinymist = {
   cmd = { bin "tinymist" },
   settings = {
-    exportPdf = "onSave",
-    formatterMode = "typstyle", -- aligne le formatage interne du LSP sur typstyle
+    exportPdf = "never",
+    formatterMode = "typstyle",
   },
 }
 

@@ -10,6 +10,13 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+
+        fontsConf = pkgs.makeFontsConf {
+          fontDirectories = [
+            "${pkgs.font-awesome}/share/fonts/opentype"
+            "${pkgs.font-awesome}/share/fonts/truetype"
+          ];
+        };
       in
       {
         devShells.default = pkgs.mkShell {
@@ -17,7 +24,10 @@
             typst
             typstyle
             tinymist
+            font-awesome
           ];
+
+          FONTCONFIG_FILE = fontsConf;
 
           shellHook = ''
             echo "📝 Typst $(typst --version)"

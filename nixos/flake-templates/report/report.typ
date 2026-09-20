@@ -1,4 +1,4 @@
-#let project(
+#let report(
   theme: none,
   title: "Title",
   subtitle: none,
